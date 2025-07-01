@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) scale(1.1);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 6s ease-in-out infinite;
+}
+
+html, body, #root {
+  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+#root > div {
+  min-height: 100vh;
+  height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+@keyframes slide-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 1s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+
+@layer utilities {
+  .animate-spin-in {
+    animation: spin-in 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  @keyframes spin-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) rotate(-360deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bg-gradient-move {
+  transition: background-position 0.7s cubic-bezier(0.4,0,0.2,1);
+  background-position: left;
+}
+.group:hover .bg-gradient-move {
+  background-position: right;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+.animate-gradient-move {
+  /* Only animate when parent .group is hovered */
+  background-size: 200% 100%;
+}
+.group:hover .animate-gradient-move {
+  animation: gradient-move 2s linear infinite;
+}
