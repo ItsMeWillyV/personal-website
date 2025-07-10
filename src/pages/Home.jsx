@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import portrait from '../assets/portrait.png';
 import { API_DOMAIN } from '../api';
-import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode } from 'react-icons/fa';
 import { SiLua, SiTailwindcss, SiExpress, SiDotnet } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import axios from 'axios';
@@ -14,6 +14,32 @@ export default function Home() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [openFAQ, setOpenFAQ] = useState(null);
+  const [githubActivity, setGithubActivity] = useState([]);
+  const [githubLoading, setGithubLoading] = useState(true);
+
+  const toggleFAQ = (index) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
+  const faqData = [
+    {
+      question: "What is Tech2Gether?",
+      answer: "Tech2Gether is the tech club at Ozarks Technical Community College (OTC). We focus on bringing together students interested in technology, programming, and cybersecurity. We organize workshops and tech talks to help students grow their skills and engage with industry professionals."
+    },
+        {
+      question: "What kind of projects do you enjoy working on?",
+      answer: "I'm probably most skilled with web and Node.js applications, however, I enjoy developing pretty much anything that solves real-world problems, and love adding new weapons to my development arsenal."
+    },
+    {
+      question: "Are you available for freelance work?",
+      answer: "As a full-time student with unique circumstances, I have limited availability, but I'm open to discussing interesting projects that align with my goals and expertise. Feel free to reach out via LinkedIn."
+    },
+    {
+      question: "What are your future career goals?",
+      answer: "I'm focused on completing my Computer Information Science degree while gaining practical experience through projects and leadership roles. I'm particularly interested in fullstack development and exploring opportunities in software engineering after graduation."
+    }
+  ];
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +53,18 @@ export default function Home() {
       .catch(err => {
         setError(err.message);
         setLoading(false);
+      });
+
+    // Fetch GitHub activity
+    setGithubLoading(true);
+    axios.get('https://api.github.com/users/ItsMeWillyV/events/public')
+      .then(res => {
+        setGithubActivity(res.data.slice(0, 5));
+        setGithubLoading(false);
+      })
+      .catch(err => {
+        console.error('GitHub API error:', err);
+        setGithubLoading(false);
       });
   }, []);
 
@@ -59,11 +97,11 @@ export default function Home() {
           <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mb-2 text-center">Computer Information Science Student & Fullstack Developer</h2>
           <div className="text-purple-100 text-lg leading-relaxed text-center max-w-2xl w-full mb-8 transition-opacity duration-1000 opacity-0 animate-fade-in">
             <p>
-              Hello there! I'm Willy Vanderpool, a 17-year-old Computer Information Science student at Ozarks Technical Community College (OTC). I'm currently the president of OTC's tech club, Tech2Gether. My programming journey began long before college, driven by curiosity and creativity. I’m experienced with HTML, CSS, JavaScript, Java, Lua, and C#. Beyond programming, I enjoy drawing pixel art, collecting Pokémon cards, 3D printing, and playing video games with my friends.
+              Hello there! I'm Willy Vanderpool, an 18-year-old Computer Information Science student at Ozarks Technical Community College (OTC). I'm currently serving as the president of OTC's tech club, Tech2Gether. My passion for programming started long before college, sparked by curiosity and a love for creating things from scratch. Over the years, I've gained experience with HTML, CSS, JavaScript, C#, Java, and Lua, and recently I've been diving deeper into modern frameworks such as React, TailwindCSS, and .NET MAUI. Outside of programming, some of my hobbies include drawing pixel art, playing videogames, and collecting Pokémon cards. I've also been learning German since around mid January 2025. My favorite colors are purple and green, if you couldn't tell.
             </p>
           </div>
           <section className="w-full max-w-3xl mx-auto mt-12 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-200">
-            <h2 className="text-2xl font-bold text-teal-300 mb-4">My Projects</h2>
+            <h2 className="text-2xl font-bold text-purple-300 mb-4">My Projects</h2>
             {loading && <p className="text-white">Loading projects...</p>}
             {!loading && error && <p className="text-red-500">Error: {error}</p>}
             {!loading && !error && (
@@ -79,7 +117,7 @@ export default function Home() {
                         <img
                           src={`${API_DOMAIN}/images/projects/${project.id}.png`}
                           alt={project.name + ' thumbnail'}
-                          className="w-14 h-14 object-cover rounded-md border border-teal-800 bg-black/30 flex-shrink-0"
+                          className="w-14 h-14 object-cover rounded-md flex-shrink-0"
                         />
                         <div>
                           <span className="text-lg font-semibold text-white block truncate">{project.name}</span>
@@ -114,16 +152,81 @@ export default function Home() {
                 ))}
               </ul>
             )}
-            <div className="mt-6 text-right">
+            <div className="mt-6 text-center md:text-right">
               <a href="/projects" className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform">See All Projects</a>
             </div>
           </section>
-          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-indigo-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-400">
-            <h2 className="text-2xl font-bold text-indigo-300 mb-4">API</h2>
-            <p className="text-purple-100 mb-4">Pokem ipsum dolor sit amet Rapidash quis nostrud exercitation Glalie Jellicent Azumarill Caterpie.</p>
-            <a href="/api-docs" className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform">View API Docs</a>
+          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-indigo-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-300">
+            <h2 className="text-2xl font-bold text-indigo-300 mb-4">Recent GitHub Activity</h2>
+            {githubLoading && <p className="text-white">Loading GitHub activity...</p>}
+            {!githubLoading && githubActivity.length === 0 && <p className="text-gray-400">Unable to fetch GitHub activity.</p>}
+            {!githubLoading && githubActivity.length > 0 && (
+              <div className="space-y-4">
+                {githubActivity.map((event, idx) => (
+                  <div
+                    key={event.id}
+                    className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-lg p-4 shadow flex items-center gap-4 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl transition-opacity duration-1000 opacity-0 animate-fade-in"
+                    style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-700/50 flex items-center justify-center border border-indigo-600">
+                      <span className="text-xl">
+                        {event.type === 'PushEvent' ? <FaGitAlt className="text-green-400" /> : 
+                         event.type === 'CreateEvent' ? <FaPlus className="text-blue-400" /> : 
+                         event.type === 'IssuesEvent' ? <FaBug className="text-red-400" /> : 
+                         event.type === 'PullRequestEvent' ? <FaCodeBranch className="text-purple-400" /> : 
+                         event.type === 'WatchEvent' ? <FaStar className="text-yellow-400" /> : 
+                         event.type === 'ForkEvent' ? <FaCodeBranch className="text-teal-400" /> : <FaCode className="text-indigo-400" />}
+                      </span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-indigo-200 font-semibold text-sm">
+                          {event.type === 'PushEvent' ? 'Pushed to' : 
+                           event.type === 'CreateEvent' ? 'Created' : 
+                           event.type === 'IssuesEvent' ? 'Opened issue in' : 
+                           event.type === 'PullRequestEvent' ? 'Created pull request in' : 
+                           event.type === 'WatchEvent' ? 'Starred' : 
+                           event.type === 'ForkEvent' ? 'Forked' : 'Activity in'}
+                        </span>
+                        <a 
+                          href={`https://github.com/${event.repo.name}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white hover:text-indigo-200 font-medium text-sm truncate"
+                        >
+                          {event.repo.name}
+                        </a>
+                      </div>
+                      {event.payload.commits && event.payload.commits.length > 0 && (
+                        <p className="text-indigo-300/80 text-xs truncate mb-1">
+                          {event.payload.commits[0].message}
+                        </p>
+                      )}
+                      {event.payload.description && (
+                        <p className="text-indigo-300/80 text-xs truncate mb-1">
+                          {event.payload.description}
+                        </p>
+                      )}
+                      <p className="text-indigo-400/60 text-xs">
+                        {new Date(event.created_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="mt-6 text-center md:text-right">
+              <a 
+                href="https://github.com/ItsMeWillyV" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform"
+              >
+                View GitHub Profile
+              </a>
+            </div>
           </section>
-          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-teal-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-300">
+          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-teal-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-400">
             <h2 className="text-2xl font-bold text-teal-300 mb-4">Skills & Tech Stack</h2>
             <div className="flex flex-col md:flex-row gap-8 justify-center">
               <div>
@@ -148,6 +251,35 @@ export default function Home() {
                   <span title=".NET MAUI" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><SiDotnet className="text-blue-200" /> .NET MAUI</span>
                 </div>
               </div>
+            </div>
+          </section>
+          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-green-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-500">
+            <h2 className="text-2xl font-bold text-green-300 mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqData.map((faq, index) => (
+                <div key={index} className="border border-green-800/50 rounded-lg overflow-hidden">
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full px-6 py-4 text-left bg-green-900/20 hover:bg-green-900/30 transition-colors flex items-center justify-between"
+                  >
+                    <span className="text-green-100 font-medium">{faq.question}</span>
+                    {openFAQ === index ? (
+                      <FaChevronUp className="text-green-300 flex-shrink-0" />
+                    ) : (
+                      <FaChevronDown className="text-green-300 flex-shrink-0" />
+                    )}
+                  </button>
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="px-6 py-4 bg-green-950/30 border-t border-green-800/50">
+                      <p className="text-green-100 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
         </main>
