@@ -25,7 +25,7 @@ export default function Home() {
   const faqData = [
     {
       question: "What is Tech2Gether?",
-      answer: "Tech2Gether is the tech club at Ozarks Technical Community College (OTC). We focus on bringing together students interested in technology, programming, and cybersecurity. We organize workshops and tech talks to help students grow their skills and engage with industry professionals."
+      answer: "Tech2Gether is the tech club at Ozarks Technical Community College. We focus on bringing together students interested in technology, programming, and cybersecurity. We organize workshops and tech talks to help students grow their skills and engage with industry professionals."
     },
         {
       question: "What kind of projects do you enjoy working on?",
@@ -33,7 +33,7 @@ export default function Home() {
     },
     {
       question: "Are you available for freelance work?",
-      answer: "As a full-time student with unique circumstances, I have limited availability, but I'm open to discussing interesting projects that align with my goals and expertise. Feel free to reach out via LinkedIn."
+      answer: "As a full-time student who has many responsibilities, I have limited availability, but I'm open to discussing interesting projects that align with my goals and expertise. Feel free to reach out via LinkedIn."
     },
     {
       question: "What are your future career goals?",
@@ -97,7 +97,7 @@ export default function Home() {
           <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mb-2 text-center">Computer Information Science Student & Fullstack Developer</h2>
           <div className="text-purple-100 text-lg leading-relaxed text-center max-w-2xl w-full mb-8 transition-opacity duration-1000 opacity-0 animate-fade-in">
             <p>
-              Hello there! I'm Willy Vanderpool, an 18-year-old Computer Information Science student at Ozarks Technical Community College (OTC). I'm currently serving as the president of OTC's tech club, Tech2Gether. My passion for programming started long before college, sparked by curiosity and a love for creating things from scratch. Over the years, I've gained experience with HTML, CSS, JavaScript, C#, Java, and Lua, and recently I've been diving deeper into modern frameworks such as React, TailwindCSS, and .NET MAUI. Outside of programming, some of my hobbies include drawing pixel art, playing videogames, and collecting Pokémon cards. I've also been learning German since around mid January 2025. My favorite colors are purple and green, if you couldn't tell.
+              Hello there! I'm Willy Vanderpool, an 18-year-old Computer Information Science student at Ozarks Technical Community College (Ozarks Tech). I'm currently working in Ozarks Tech's Web Services department, and I'm also the president of Ozarks Tech's tech club, Tech2Gether. My passion for programming started long before college, sparked by curiosity and a love for creating things from scratch. Over the years, I've gained experience with a variety of languages and tools, and recently I've been diving deeper into modern frameworks such as React and Tailwind. Outside of programming, some of my hobbies include drawing pixel art, playing videogames, and collecting Pokémon cards. I've also been learning German for almost a year. My favorite colors are purple and green, if you couldn't tell.
             </p>
           </div>
           <section className="w-full max-w-3xl mx-auto mt-12 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-200">
