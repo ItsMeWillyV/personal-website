@@ -65,7 +65,7 @@ export default function Projects() {
               projects.map((project, idx) => (
                 <div
                   key={idx}
-                  className="bg-gradient-to-r from-purple-900 via-indigo-900 to-teal-900 rounded-xl shadow-lg p-6 border border-purple-800 flex flex-col items-center justify-between transition-transform duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl transition-opacity duration-1000 opacity-0 animate-fade-in"
+                  className="bg-gradient-to-r from-purple-900 via-indigo-900 to-teal-900 rounded-xl shadow-lg p-6 border border-purple-800 flex flex-col items-center justify-between transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl opacity-0 animate-fade-in"
                   style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
                 >
                   <img

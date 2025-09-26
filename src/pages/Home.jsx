@@ -109,7 +109,7 @@ export default function Home() {
                 {projects.map((project, idx) => (
                   <li
                     key={project.id}
-                    className="bg-gradient-to-r from-purple-900 via-indigo-900 to-teal-900 rounded-lg p-4 shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl transition-opacity duration-1000 opacity-0 animate-fade-in"
+                    className="bg-gradient-to-r from-purple-900 via-indigo-900 to-teal-900 rounded-lg p-4 shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl opacity-0 animate-fade-in"
                     style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
                   >
                     <div className="flex-1 min-w-0">
@@ -165,7 +165,7 @@ export default function Home() {
                 {githubActivity.map((event, idx) => (
                   <div
                     key={event.id}
-                    className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-lg p-4 shadow flex items-center gap-4 transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl transition-opacity duration-1000 opacity-0 animate-fade-in"
+                    className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-lg p-4 shadow flex items-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl opacity-0 animate-fade-in"
                     style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
                   >
                     <div className="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-700/50 flex items-center justify-center border border-indigo-600">
