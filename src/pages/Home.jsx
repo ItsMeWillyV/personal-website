@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import portrait from '../assets/portrait.png';
 import { API_DOMAIN } from '../api';
-import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode } from 'react-icons/fa';
-import { SiLua, SiTailwindcss, SiExpress, SiDotnet } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython } from 'react-icons/fa';
+import { SiLua, SiTailwindcss, SiExpress, SiDotnet, SiMysql } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import axios from 'axios';
 
@@ -238,6 +238,7 @@ export default function Home() {
                   <span title="Java" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><FaJava className="text-blue-200" /> Java</span>
                   <span title="Lua" className="flex items-center gap-2 bg-blue-800/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><SiLua className="text-blue-200" /> Lua</span>
                   <span title="C#" className="flex items-center gap-2 bg-teal-900/60 text-teal-100 px-4 py-2 rounded-full font-semibold shadow"><TbBrandCSharp className="text-teal-200" /> C#</span>
+                  <span title="Python" className="flex items-center gap-2 bg-green-800/60 text-green-100 px-4 py-2 rounded-full font-semibold shadow"><FaPython className="text-green-200" /> Python</span>
                 </div>
               </div>
               <div>
@@ -249,6 +250,7 @@ export default function Home() {
                   <span title="Node.js" className="flex items-center gap-2 bg-lime-900/60 text-lime-100 px-4 py-2 rounded-full font-semibold shadow"><FaNodeJs className="text-lime-200" /> Node.js</span>
                   <span title="Express" className="flex items-center gap-2 bg-gray-800/60 text-gray-100 px-4 py-2 rounded-full font-semibold shadow"><SiExpress className="text-gray-200" /> Express</span>
                   <span title=".NET MAUI" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><SiDotnet className="text-blue-200" /> .NET MAUI</span>
+                  <span title="MySQL" className="flex items-center gap-2 bg-blue-700/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><SiMysql className="text-blue-200" /> MySQL</span>
                 </div>
               </div>
             </div>
