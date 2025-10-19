@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 const BUBBLE_COUNT = 30;
 const PADDING = 20;
@@ -23,40 +23,30 @@ function createBubble() {
 }
 
 export default function Bubbles() {
-  const initialBubbles = useMemo(() => Array.from({ length: BUBBLE_COUNT }, createBubble), []);
-  const [bubbles, setBubbles] = useState(initialBubbles);
-
-  useEffect(() => {
-    if (bubbles.length < BUBBLE_COUNT) {
-      const timeout = setTimeout(() => {
-        setBubbles(prev => {
-          if (prev.length < BUBBLE_COUNT) {
-            return [...prev, createBubble()];
-          }
-          return prev;
-        });
-      }, 800 + Math.random() * 1200);
-      return () => clearTimeout(timeout);
-    }
-  }, [bubbles]);
+  const bubbles = useMemo(() => Array.from({ length: BUBBLE_COUNT }, createBubble), []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none w-full h-full" style={{ padding: PADDING }}>
+    <div
+      className="pointer-events-none fixed top-0 left-0 w-screen h-screen"
+      style={{ padding: PADDING }}
+      aria-hidden="true"
+    >
       {bubbles.map((bubble) => (
         <span
           key={bubble.id}
-          className="absolute rounded-full opacity-30 animate-bounce-slow aspect-square transition-transform duration-200 pointer-events-auto"
+          className="absolute rounded-full opacity-30 animate-bounce-slow aspect-square"
           style={{
             width: `${bubble.size}px`,
             height: `${bubble.size}px`,
-            left: `calc(${bubble.left}% )`,
-            top: `calc(${bubble.top}% )`,
+            left: `${bubble.left}%`,
+            top: `${bubble.top}%`,
             background: 'radial-gradient(circle at 30% 30%, #a78bfa 60%, #6d28d9 100%)',
             filter: 'blur(2px)',
             animationDelay: `${bubble.delay}s`,
             boxShadow: '0 0 0 3px rgba(255,255,255,0.5)',
             zIndex: 1,
           }}
+          role="presentation"
         >
           <span
             style={{
@@ -65,7 +55,8 @@ export default function Bubbles() {
               left: '14%',
               width: '32%',
               height: '10%',
-              background: 'linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%)',
+              background:
+                'linear-gradient(90deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%)',
               borderRadius: '40% 60% 60% 40%/60% 40% 60% 40%',
               transform: 'rotate(-18deg)',
               pointerEvents: 'none',
