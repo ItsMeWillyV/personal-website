@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Bubbles from '../components/Bubbles';
+import portrait from '../assets/portrait.png';
 
 export default function ApiDocs() {
   return (
@@ -14,10 +15,10 @@ export default function ApiDocs() {
         <meta property="og:title" content="willy-v.com" />
         <meta property="og:description" content="API documentation for willy-v.com by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta property="og:url" content={window.location.origin + '/api-docs'} />
-        <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
+        <meta property="og:image" content={portrait} />
         <meta itemProp="name" content="willy-v.com" />
         <meta itemProp="description" content="API documentation for willy-v.com by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
-        <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
+        <meta itemProp="image" content={portrait} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
         <Header />

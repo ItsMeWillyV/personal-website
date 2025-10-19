@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { API_DOMAIN } from '../api';
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
+import portrait from '../assets/portrait.png';
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -36,10 +37,10 @@ export default function Projects() {
         <meta property="og:title" content="MinasaurV" />
         <meta property="og:description" content="Explore projects by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta property="og:url" content={window.location.origin + '/projects'} />
-        <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
+        <meta property="og:image" content={portrait} />
         <meta itemProp="name" content="MinasaurV" />
         <meta itemProp="description" content="Explore projects by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
-        <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
+        <meta itemProp="image" content={portrait} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
         <Header />

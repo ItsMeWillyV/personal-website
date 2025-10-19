@@ -17,10 +17,10 @@ export default function Teapot() {
         <meta property="og:title" content="MinasaurV" />
         <meta property="og:description" content="The server refuses to brew coffee because it is a teapot." />
         <meta property="og:url" content={window.location.origin + '/teapot'} />
-        <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
+        <meta property="og:image" content={teapotImg} />
         <meta itemProp="name" content="MinasaurV" />
         <meta itemProp="description" content="The server refuses to brew coffee because it is a teapot." />
-        <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
+        <meta itemProp="image" content={teapotImg} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black text-white relative overflow-hidden">
         <Header />

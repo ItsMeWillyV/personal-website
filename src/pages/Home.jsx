@@ -100,10 +100,10 @@ export default function Home() {
         <meta property="og:title" content="MinasaurV" />
         <meta property="og:description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta property="og:url" content={window.location.origin + '/'} />
-        <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
+  <meta property="og:image" content={portrait} />
         <meta itemProp="name" content="MinasaurV" />
         <meta itemProp="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
-        <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
+        <meta itemProp="image" content={portrait} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
         <Header />

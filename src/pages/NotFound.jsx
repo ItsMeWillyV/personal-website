@@ -4,6 +4,7 @@ import Bubbles from '../components/Bubbles';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import warningIcon from '../assets/warn.png';
+import portrait from '../assets/portrait.png';
 
 export default function NotFound() {
   return (
@@ -17,10 +18,10 @@ export default function NotFound() {
         <meta property="og:title" content="MinasaurV" />
         <meta property="og:description" content="The page you are looking for does not exist." />
         <meta property="og:url" content={window.location.origin + window.location.pathname} />
-        <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
+        <meta property="og:image" content={portrait} />
         <meta itemProp="name" content="MinasaurV" />
         <meta itemProp="description" content="The page you are looking for does not exist." />
-        <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
+        <meta itemProp="image" content={portrait} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black text-white relative overflow-hidden">
         <Header />
