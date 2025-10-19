@@ -16,7 +16,7 @@ export default function Header() {
       <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-3 group">
           <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-teal-300 via-indigo-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg group-hover:scale-105 transition-transform duration-200 bg-[length:200%_100%] bg-left group-hover:bg-right bg-gradient-move">
-            willy-v.com
+            MinasaurV
           </span>
         </Link>
         <button
