@@ -17,6 +17,28 @@ export default function Home() {
   const [openFAQ, setOpenFAQ] = useState(null);
   const [githubActivity, setGithubActivity] = useState([]);
   const [githubLoading, setGithubLoading] = useState(true);
+  const Splashes = [
+    'Now with more purple!',
+    'In the GitHub, straight up "forking it"',
+    "We taught the rocks how to count and we've regretted it ever since.",
+    "Debugging is like being the detective in a crime movie where you're also the murderer.",
+    "Not afraid to commit!",
+    "May the source be with you.",
+    "Segmentation fault (core dumped)",
+    "Database_2 - The SQL",
+    "I used to be an adventurer like you, then I took a merge conflict to the knee.",
+    "git push origin main --force",
+    "sudo rm -rf /"
+
+  ];
+  const getRandomSplash = () => {
+    return Splashes[Math.floor(Math.random() * Splashes.length)];
+  };
+  const [splash, setSplash] = useState(() => getRandomSplash());
+
+  const shuffleSplash = () => {
+    setSplash(() => getRandomSplash());
+  };
 
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index);
@@ -72,15 +94,15 @@ export default function Home() {
     <>
       <Helmet key={window.location.pathname}>
         <title>Home</title>
-        <meta name="description" content="Welcome to the website of Willy Vanderpool (WillyV), a Computer Information Science student and Full Stack developer" />
-        <meta name="keywords" content="Willy Vanderpool, WillyV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI" />
+        <meta name="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
+        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI" />
         <link rel="canonical" href={window.location.origin + '/'} />
         <meta property="og:title" content="willy-v.com" />
-        <meta property="og:description" content="Welcome to the website of Willy Vanderpool (WillyV), a Computer Information Science student and Full Stack developer." />
+        <meta property="og:description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta property="og:url" content={window.location.origin + '/'} />
         <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
         <meta itemProp="name" content="willy-v.com" />
-        <meta itemProp="description" content="Welcome to the website of Willy Vanderpool (WillyV), a Computer Information Science student and Full Stack developer." />
+        <meta itemProp="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
@@ -89,19 +111,97 @@ export default function Home() {
         <main className="flex flex-col items-center justify-center flex-1 w-full px-4 py-12 md:py-20 z-10 relative">
           <img 
             src={portrait}
-            alt="Portrait of WillyV" 
+            alt="A young woman with dark-brown hair and eyes smiling warmly." 
             className="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-lg mb-6 object-cover border-4 border-transparent bg-gradient-to-br from-purple-400 via-indigo-500 to-teal-400 p-1 image-render-pixelated animate-spin-in"
             style={{ backgroundClip: 'padding-box, border-box', backgroundOrigin: 'border-box' }}
           />
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">Willy Vanderpool</h1>
-          <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mb-2 text-center">Computer Information Science Student & Fullstack Developer</h2>
-          <div className="text-purple-100 text-lg leading-relaxed text-center max-w-2xl w-full mb-8 transition-opacity duration-1000 opacity-0 animate-fade-in">
-            <p>
-              Hello there! I'm Willy Vanderpool, an 18-year-old Computer Information Science student at Ozarks Technical Community College (Ozarks Tech). I'm currently working in Ozarks Tech's Web Services department, and I'm also the president of Ozarks Tech's tech club, Tech2Gether. My passion for programming started long before college, sparked by curiosity and a love for creating things from scratch. Over the years, I've gained experience with a variety of languages and tools, and recently I've been diving deeper into modern frameworks such as React and Tailwind. Outside of programming, some of my hobbies include drawing pixel art, playing videogames, and collecting Pokémon cards. I've also been learning German for almost a year. My favorite colors are purple and green, if you couldn't tell.
-            </p>
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-0 text-center">Wilhelmina Vanderpool</h1>
+            <a
+              href="https://en.pronouns.page/@minasaur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 border border-purple-900 text-purple-100 text-sm font-semibold shadow-lg transition-all duration-200 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-purple-800/50 no-underline"
+              aria-label={`Pronouns: she/her`}
+              title="Pronouns: she/her"
+            >
+              🏳️‍⚧️ she/her
+            </a>
           </div>
+          <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mt-2 mb-1 text-center">Web Developer & Student Leader</h2>
+            <div>
+              <button
+                type="button"
+                onClick={shuffleSplash}
+                className="text-xs md:text-sm font-medium text-indigo-200/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-300/40 rounded px-2 py-0.5 cursor-pointer"
+                aria-label="Shuffle splash text"
+                title="Click to shuffle"
+              >
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-indigo-200 to-teal-200">
+                  {splash}
+                </span>
+              </button>
+            </div>
+          <section className="w-full max-w-3xl mx-auto mt-6 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in">
+            <h3 className="text-2xl font-bold text-purple-300 mb-4 text-left">About Me</h3>
+            <p className="text-purple-100 leading-relaxed mb-6 text-left">
+              Hello there! I'm Mina, a Computer Information Science student at Ozarks Technical Community College (Ozarks Tech). I work in Ozarks Tech's Web Services department and lead the campus tech club, Tech2Gether. I love building useful things and learning new technologies.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-purple-900/30 border border-purple-800 rounded-lg p-4">
+                <h4 className="text-lg font-semibold text-purple-200 mb-2">Currently</h4>
+                <ul className="list-disc pl-5 space-y-1 text-purple-100/90">
+                  <li>Ozarks Tech
+                    <ul className="list-disc pl-5 space-y-1 text-purple-100/90">
+                      <li>CIS student</li>
+                      <li>Web Services Office Assistant</li>
+                      <li>President of Tech2Gether (Tech Club)</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div className="bg-indigo-900/30 border border-indigo-800 rounded-lg p-4">
+                <h4 className="text-lg font-semibold text-indigo-200 mb-2">What I build</h4>
+                <ul className="list-disc pl-5 space-y-1 text-indigo-100/90">
+                  <li>Web applications</li>
+                  <li>Chatbots</li>
+                  <li>Mods &amp; Plugins</li>
+                  <li>Scripts to make my life easier (I'm lazy)</li>
+                </ul>
+              </div>
+              <div className="bg-teal-900/30 border border-teal-800 rounded-lg p-4">
+                <h4 className="text-lg font-semibold text-teal-200 mb-2">Hobbies</h4>
+                <ul className="list-disc pl-5 space-y-1 text-teal-100/90">
+                  <li>Drawing pixel art</li>
+                  <li>Playing videogames</li>
+                  <li>Collecting Pokémon cards</li>
+                  <li>Learning German</li>
+                </ul>
+              </div>
+              <div className="bg-fuchsia-900/30 border border-fuchsia-800 rounded-lg p-4">
+                <h4 className="text-lg font-semibold text-fuchsia-200 mb-2">Fun facts</h4>
+                <ul className="list-disc pl-5 space-y-1 text-fuchsia-100/90">
+                  <li>18 years old</li>
+                  <li>
+                    Pronouns: 
+                    {' '}
+                    <a
+                      href="https://en.pronouns.page/@minasaur"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-fuchsia-400/60 underline-offset-2 hover:decoration-fuchsia-200"
+                    >
+                      she/her
+                    </a>
+                  </li>
+                  <li>You just lost The Game</li>
+                  <li>Favorite colors: purple and green</li>
+                </ul>
+              </div>
+            </div>
+          </section>
           <section className="w-full max-w-3xl mx-auto mt-12 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-200">
-            <h2 className="text-2xl font-bold text-purple-300 mb-4">My Projects</h2>
+            <h3 className="text-2xl font-bold text-purple-300 mb-4">My Projects</h3>
             {loading && <p className="text-white">Loading projects...</p>}
             {!loading && error && <p className="text-red-500">Error: {error}</p>}
             {!loading && !error && (
@@ -157,7 +257,7 @@ export default function Home() {
             </div>
           </section>
           <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-indigo-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-300">
-            <h2 className="text-2xl font-bold text-indigo-300 mb-4">Recent GitHub Activity</h2>
+            <h3 className="text-2xl font-bold text-indigo-300 mb-4">Recent GitHub Activity</h3>
             {githubLoading && <p className="text-white">Loading GitHub activity...</p>}
             {!githubLoading && githubActivity.length === 0 && <p className="text-gray-400">Unable to fetch GitHub activity.</p>}
             {!githubLoading && githubActivity.length > 0 && (
@@ -227,10 +327,10 @@ export default function Home() {
             </div>
           </section>
           <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-teal-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-400">
-            <h2 className="text-2xl font-bold text-teal-300 mb-4">Skills & Tech Stack</h2>
+            <h3 className="text-2xl font-bold text-teal-300 mb-4">Skills & Tech Stack</h3>
             <div className="flex flex-col md:flex-row gap-8 justify-center">
               <div>
-                <h3 className="text-lg font-semibold text-purple-200 mb-2 text-center">Languages</h3>
+                <h4 className="text-lg font-semibold text-purple-200 mb-2 text-center">Languages</h4>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <span title="HTML" className="flex items-center gap-2 bg-purple-800/60 text-purple-100 px-4 py-2 rounded-full font-semibold shadow"><FaHtml5 className="text-purple-200" /> HTML</span>
                   <span title="CSS" className="flex items-center gap-2 bg-indigo-800/60 text-indigo-100 px-4 py-2 rounded-full font-semibold shadow"><FaCss3Alt className="text-indigo-200" /> CSS</span>
@@ -242,7 +342,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-teal-200 mb-2 text-center">Frameworks</h3>
+                <h4 className="text-lg font-semibold text-teal-200 mb-2 text-center">Frameworks</h4>
                 <div className="flex flex-wrap gap-4 justify-center">
                   <span title="React" className="flex items-center gap-2 bg-cyan-900/60 text-cyan-100 px-4 py-2 rounded-full font-semibold shadow"><FaReact className="text-cyan-200" /> React</span>
                   <span title="Vue.js" className="flex items-center gap-2 bg-green-900/60 text-green-100 px-4 py-2 rounded-full font-semibold shadow"><FaVuejs className="text-green-200" /> Vue.js</span>
@@ -256,13 +356,13 @@ export default function Home() {
             </div>
           </section>
           <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-green-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-500">
-            <h2 className="text-2xl font-bold text-green-300 mb-6">Frequently Asked Questions</h2>
+            <h3 className="text-2xl font-bold text-green-300 mb-6">Frequently Asked Questions</h3>
             <div className="space-y-4">
               {faqData.map((faq, index) => (
                 <div key={index} className="border border-green-800/50 rounded-lg overflow-hidden">
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="w-full px-6 py-4 text-left bg-green-900/20 hover:bg-green-900/30 transition-colors flex items-center justify-between"
+                    className="w-full px-6 py-4 text-left bg-green-900/20 hover:bg-green-900/30 transition-colors flex items-center justify-between cursor-pointer"
                   >
                     <span className="text-green-100 font-medium">{faq.question}</span>
                     {openFAQ === index ? (
