@@ -97,11 +97,11 @@ export default function Home() {
         <meta name="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI" />
         <link rel="canonical" href={window.location.origin + '/'} />
-        <meta property="og:title" content="willy-v.com" />
+        <meta property="og:title" content="MinasaurV" />
         <meta property="og:description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta property="og:url" content={window.location.origin + '/'} />
         <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
-        <meta itemProp="name" content="willy-v.com" />
+        <meta itemProp="name" content="MinasaurV" />
         <meta itemProp="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
       </Helmet>

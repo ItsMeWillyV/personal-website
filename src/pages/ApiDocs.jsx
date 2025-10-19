@@ -8,24 +8,15 @@ export default function ApiDocs() {
     <>
       <Helmet key={window.location.pathname}>
         <title>API Docs</title>
-        <meta name="description" content="API documentation for api.willy-v.com - Coming soon." />
-        <meta name="keywords" content="Willy Vanderpool, WillyV, API, Documentation, Computer Science, Full Stack Developer, Portfolio" />
-        <meta name="author" content="Willy Vanderpool" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="API documentation for willy-v.com by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
+        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, API, Docs" />
         <link rel="canonical" href={window.location.origin + '/api-docs'} />
-        {/* OpenGraph meta tags */}
-        <meta property="og:title" content="API Docs" />
-        <meta property="og:description" content="API documentation for api.willy-v.com - Coming soon." />
-        <meta property="og:type" content="website" />
+        <meta property="og:title" content="willy-v.com" />
+        <meta property="og:description" content="API documentation for willy-v.com by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta property="og:url" content={window.location.origin + '/api-docs'} />
         <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
-        <meta property="og:site_name" content="Willy Vanderpool" />
-        {/* Schema.org markup */}
-        <meta itemProp="name" content="API Docs" />
-        <meta itemProp="description" content="API documentation for api.willy-v.com - Coming soon." />
+        <meta itemProp="name" content="willy-v.com" />
+        <meta itemProp="description" content="API documentation for willy-v.com by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">

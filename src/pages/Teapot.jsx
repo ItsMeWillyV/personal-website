@@ -11,22 +11,14 @@ export default function Teapot() {
       <Helmet key={window.location.pathname}>
         <title>418 - I'm a Teapot</title>
         <meta name="description" content="The server refuses to brew coffee because it is a teapot." />
-        <meta name="keywords" content="Willy Vanderpool, WillyV, Teapot, 418, Easter Egg, Computer Science, Full Stack Developer" />
-        <meta name="author" content="Willy Vanderpool" />
+        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI, Teapot, 418" />
         <meta name="robots" content="noindex, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link rel="canonical" href={window.location.origin + '/teapot'} />
-        {/* OpenGraph meta tags */}
-        <meta property="og:title" content="418 - I'm a Teapot" />
+        <meta property="og:title" content="MinasaurV" />
         <meta property="og:description" content="The server refuses to brew coffee because it is a teapot." />
-        <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.origin + '/teapot'} />
         <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
-        <meta property="og:site_name" content="Willy Vanderpool" />
-        {/* Schema.org markup */}
-        <meta itemProp="name" content="418 - I'm a Teapot" />
+        <meta itemProp="name" content="MinasaurV" />
         <meta itemProp="description" content="The server refuses to brew coffee because it is a teapot." />
         <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
       </Helmet>

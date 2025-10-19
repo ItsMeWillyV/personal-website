@@ -30,24 +30,15 @@ export default function Projects() {
     <>
       <Helmet key={window.location.pathname}>
         <title>Projects</title>
-        <meta name="description" content="Explore projects by Willy Vanderpool (WillyV), Computer Information Science student and Full Stack developer." />
-        <meta name="keywords" content="Willy Vanderpool, WillyV, Projects, Portfolio, Computer Science, Full Stack Developer, JavaScript, React, OTC, Tech2Gether" />
-        <meta name="author" content="Willy Vanderpool" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Explore projects by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
+        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI" />
         <link rel="canonical" href={window.location.origin + '/projects'} />
-        {/* OpenGraph meta tags */}
-        <meta property="og:title" content="Projects" />
-        <meta property="og:description" content="Explore projects by Willy Vanderpool (WillyV), Computer Information Science student and Full Stack developer." />
-        <meta property="og:type" content="website" />
+        <meta property="og:title" content="MinasaurV" />
+        <meta property="og:description" content="Explore projects by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta property="og:url" content={window.location.origin + '/projects'} />
         <meta property="og:image" content={window.location.origin + '/images/portrait.png'} />
-        <meta property="og:site_name" content="Willy Vanderpool" />
-        {/* Schema.org markup */}
-        <meta itemProp="name" content="Projects" />
-        <meta itemProp="description" content="Explore projects by Willy Vanderpool (WillyV), Computer Information Science student and Full Stack developer." />
+        <meta itemProp="name" content="MinasaurV" />
+        <meta itemProp="description" content="Explore projects by Wilhelmina Vanderpool, a Web Developer and Student Leader." />
         <meta itemProp="image" content={window.location.origin + '/images/portrait.png'} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
