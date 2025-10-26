@@ -79,7 +79,7 @@ export default function Home() {
 
     // Fetch GitHub activity
     setGithubLoading(true);
-    axios.get('https://api.github.com/users/ItsMeWillyV/events/public')
+    axios.get('https://api.github.com/users/MinasaurV/events/public')
       .then(res => {
         setGithubActivity(res.data.slice(0, 5));
         setGithubLoading(false);
@@ -317,7 +317,7 @@ export default function Home() {
             )}
             <div className="mt-6 text-center md:text-right">
               <a 
-                href="https://github.com/ItsMeWillyV" 
+                href="https://github.com/MinasaurV" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform"

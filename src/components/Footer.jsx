@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="mt-auto w-full text-center py-4 bg-transparent text-purple-200 font-medium shadow-inner z-10 relative">
       <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-8">
         <span>&copy; {new Date().getFullYear()} MinasaurV</span>
-        <a href="https://github.com/itsmewillyv" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-teal-300 transition-colors duration-200">
+        <a href="https://github.com/MinasaurV" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-teal-300 transition-colors duration-200">
           <FaGithub className="w-4 h-4" />
           GitHub
         </a>
