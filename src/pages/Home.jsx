@@ -16,6 +16,7 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [openFAQ, setOpenFAQ] = useState(null);
   const [githubActivity, setGithubActivity] = useState([]);
+  const [githubError, setGithubError] = useState(null);
   const [githubLoading, setGithubLoading] = useState(true);
   const Splashes = [
     'Now with more purple!',
@@ -79,6 +80,7 @@ export default function Home() {
 
     // Fetch GitHub activity
     setGithubLoading(true);
+    setGithubError(null);
     axios.get('https://api.github.com/users/MinasaurV/events/public')
       .then(res => {
         setGithubActivity(res.data.slice(0, 5));
@@ -86,9 +88,38 @@ export default function Home() {
       })
       .catch(err => {
         console.error('GitHub API error:', err);
+
+        // Friendly messages for common cases
+        if (err.response && err.response.status === 403) setGithubError('GitHub rate limit reached. Try again later.');
+        else if (err.response && err.response.status === 404) setGithubError('GitHub user not found.');
+        else setGithubError('Unable to fetch GitHub activity.');
         setGithubLoading(false);
       });
   }, []);
+
+  // Helper: pretty relative time
+  const getTimeSince = (isoDate) => {
+    try {
+      const now = new Date();
+      const then = new Date(isoDate);
+      const seconds = Math.floor((now - then) / 1000);
+      const intervals = [
+        { label: 'year', secs: 31536000 },
+        { label: 'month', secs: 2592000 },
+        { label: 'day', secs: 86400 },
+        { label: 'hour', secs: 3600 },
+        { label: 'minute', secs: 60 },
+        { label: 'second', secs: 1 },
+      ];
+      for (const i of intervals) {
+        const count = Math.floor(seconds / i.secs);
+        if (count >= 1) return `${count} ${i.label}${count > 1 ? 's' : ''} ago`;
+      }
+      return 'just now';
+    } catch {
+      return '';
+    }
+  };
 
   return (
     <>
@@ -258,62 +289,108 @@ export default function Home() {
           </section>
           <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-indigo-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-300">
             <h3 className="text-2xl font-bold text-indigo-300 mb-4">Recent GitHub Activity</h3>
-            {githubLoading && <p className="text-white">Loading GitHub activity...</p>}
-            {!githubLoading && githubActivity.length === 0 && <p className="text-gray-400">Unable to fetch GitHub activity.</p>}
-            {!githubLoading && githubActivity.length > 0 && (
-              <div className="space-y-4">
-                {githubActivity.map((event, idx) => (
-                  <div
-                    key={event.id}
-                    className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-lg p-4 shadow flex items-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl opacity-0 animate-fade-in"
-                    style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-700/50 flex items-center justify-center border border-indigo-600">
-                      <span className="text-xl">
-                        {event.type === 'PushEvent' ? <FaGitAlt className="text-green-400" /> : 
-                         event.type === 'CreateEvent' ? <FaPlus className="text-blue-400" /> : 
-                         event.type === 'IssuesEvent' ? <FaBug className="text-red-400" /> : 
-                         event.type === 'PullRequestEvent' ? <FaCodeBranch className="text-purple-400" /> : 
-                         event.type === 'WatchEvent' ? <FaStar className="text-yellow-400" /> : 
-                         event.type === 'ForkEvent' ? <FaCodeBranch className="text-teal-400" /> : <FaCode className="text-indigo-400" />}
-                      </span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-indigo-200 font-semibold text-sm">
-                          {event.type === 'PushEvent' ? 'Pushed to' : 
-                           event.type === 'CreateEvent' ? 'Created' : 
-                           event.type === 'IssuesEvent' ? 'Opened issue in' : 
-                           event.type === 'PullRequestEvent' ? 'Created pull request in' : 
-                           event.type === 'WatchEvent' ? 'Starred' : 
-                           event.type === 'ForkEvent' ? 'Forked' : 'Activity in'}
-                        </span>
-                        <a 
-                          href={`https://github.com/${event.repo.name}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white hover:text-indigo-200 font-medium text-sm truncate"
-                        >
-                          {event.repo.name}
-                        </a>
-                      </div>
-                      {event.payload.commits && event.payload.commits.length > 0 && (
-                        <p className="text-indigo-300/80 text-xs truncate mb-1">
-                          {event.payload.commits[0].message}
-                        </p>
-                      )}
-                      {event.payload.description && (
-                        <p className="text-indigo-300/80 text-xs truncate mb-1">
-                          {event.payload.description}
-                        </p>
-                      )}
-                      <p className="text-indigo-400/60 text-xs">
-                        {new Date(event.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
+            {githubLoading && (
+              <div className="space-y-3">
+                {[1,2,3].map((s) => (
+                  <div key={s} className="animate-pulse bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-lg p-4 shadow">
+                    <div className="h-4 bg-indigo-700/30 rounded w-3/4 mb-2" />
+                    <div className="h-3 bg-indigo-700/20 rounded w-1/2" />
                   </div>
                 ))}
               </div>
+            )}
+            {!githubLoading && githubError && (
+              <p className="text-yellow-300">{githubError}</p>
+            )}
+            {!githubLoading && !githubError && githubActivity.length === 0 && (
+              <p className="text-gray-400">No recent public activity.</p>
+            )}
+            {!githubLoading && !githubError && githubActivity.length > 0 && (
+              <ul className="space-y-3">
+                {githubActivity.map((event, idx) => {
+                  const eventType = event.type.replace('Event', '');
+                  const repoUrl = `https://github.com/${event.repo?.name}`;
+                  
+                  let detailText = '';
+                  let detailLink = repoUrl;
+                  
+                  if (event.type === 'PushEvent') {
+                    const branchRef = event.payload?.ref || '';
+                    const branch = branchRef.replace('refs/heads/', '');
+                    
+                    if (branch) {
+                      detailText = branch;
+                      detailLink = `${repoUrl}/tree/${branch}`;
+                    }
+                  } else if (event.type === 'PullRequestEvent' && event.payload?.pull_request) {
+                    const pr = event.payload.pull_request;
+                    detailText = pr.title || '';
+                    detailLink = pr.html_url || detailLink;
+                  } else if (event.type === 'IssuesEvent' && event.payload?.issue) {
+                    const issue = event.payload.issue;
+                    detailText = issue.title || '';
+                    detailLink = issue.html_url || detailLink;
+                  } else if (event.type === 'CreateEvent') {
+                    const refType = event.payload?.ref_type || '';
+                    const ref = event.payload?.ref || '';
+                    if (ref) {
+                      detailText = `Created ${refType}: ${ref}`;
+                      detailLink = `${repoUrl}/tree/${ref}`;
+                    }
+                  } else if (event.type === 'ForkEvent' && event.payload?.forkee) {
+                    detailText = `Forked to ${event.payload.forkee.full_name}`;
+                    detailLink = event.payload.forkee.html_url || detailLink;
+                  }
+                  
+                  return (
+                    <li
+                      key={event.id}
+                      className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-lg p-4 shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl opacity-0 animate-fade-in"
+                      style={{ animationDelay: `${idx * 0.1}s` }}
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <img
+                          src={event.actor?.avatar_url}
+                          alt={event.actor?.display_login || 'avatar'}
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 border border-indigo-600 object-cover"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <span className="text-indigo-200 text-sm">{eventType}</span>
+                          <a
+                            href={repoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white hover:text-indigo-200 font-medium block break-words"
+                          >
+                            {event.repo?.name}
+                          </a>
+                          {detailText && (
+                            <a
+                              href={detailLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-indigo-300/80 text-sm block mt-1 break-words hover:underline"
+                            >
+                              {detailText}
+                            </a>
+                          )}
+                          <p className="text-indigo-400/60 text-xs mt-1">{getTimeSince(event.created_at)}</p>
+                        </div>
+                        <div className="flex-shrink-0">
+                          <span className="text-xl">
+                            {event.type === 'PushEvent' ? <FaGitAlt className="text-green-400" /> : 
+                             event.type === 'CreateEvent' ? <FaPlus className="text-blue-400" /> : 
+                             event.type === 'IssuesEvent' ? <FaBug className="text-red-400" /> : 
+                             event.type === 'PullRequestEvent' ? <FaCodeBranch className="text-purple-400" /> : 
+                             event.type === 'WatchEvent' ? <FaStar className="text-yellow-400" /> : 
+                             event.type === 'ForkEvent' ? <FaCodeBranch className="text-teal-400" /> : <FaCode className="text-indigo-400" />}
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
             )}
             <div className="mt-6 text-center md:text-right">
               <a 
