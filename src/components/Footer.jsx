@@ -11,7 +11,7 @@ export default function Footer() {
           <FaGithub className="w-4 h-4" />
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/willy-vanderpool/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-teal-300 transition-colors duration-200">
+        <a href="https://linkedin.com/in/minasaur" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-teal-300 transition-colors duration-200">
           <FaLinkedin className="w-4 h-4" />
           LinkedIn
         </a>

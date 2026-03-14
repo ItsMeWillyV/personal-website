@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import portrait from '../assets/portrait.png';
 import { API_DOMAIN } from '../api';
-import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython } from 'react-icons/fa';
-import { SiLua, SiTailwindcss, SiExpress, SiDotnet, SiMysql } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython, FaDatabase, FaUbuntu, FaFigma } from 'react-icons/fa';
+import { SiLua, SiTailwindcss, SiExpress, SiDotnet, SiMysql, SiMongodb, SiDjango, SiGit, SiNginx, SiCloudflare, SiMiro } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import axios from 'axios';
 
@@ -22,14 +22,14 @@ export default function Home() {
     'Now with more purple!',
     'In the GitHub, straight up "forking it"',
     "We taught the rocks how to count and we've regretted it ever since.",
-    "Debugging is like being the detective in a crime movie where you're also the murderer.",
     "Not afraid to commit!",
     "May the source be with you.",
     "Segmentation fault (core dumped)",
     "Database_2 - The SQL",
     "I used to be an adventurer like you, then I took a merge conflict to the knee.",
     "git push origin main --force",
-    "sudo rm -rf /"
+    "sudo rm -rf /",
+    "20% cooler!"
 
   ];
   const getRandomSplash = () => {
@@ -50,9 +50,9 @@ export default function Home() {
       question: "What is Tech2Gether?",
       answer: "Tech2Gether is the tech club at Ozarks Technical Community College. We focus on bringing together students interested in technology, programming, and cybersecurity. We organize workshops and tech talks to help students grow their skills and engage with industry professionals."
     },
-        {
+    {
       question: "What kind of projects do you enjoy working on?",
-      answer: "I'm probably most skilled with web and Node.js applications, however, I enjoy developing pretty much anything that solves real-world problems, and love adding new weapons to my development arsenal."
+      answer: "I enjoy building practical applications that solve real-world problems, and love adding new weapons to my development arsenal."
     },
     {
       question: "Are you available for freelance work?",
@@ -126,7 +126,7 @@ export default function Home() {
       <Helmet key={window.location.pathname}>
         <title>Home</title>
         <meta name="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
-        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI" />
+        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Information Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Ozarks Tech, Tech2Gether, Student, Programmer, Developer, Pixel Art, Skateboarding, C#, Python, Java, SQL, Lua, ASP.NET, Django, Vue.js, Express.js, Tailwind CSS, T-SQL, MySQL, MongoDB, Git, NGINX, Ubuntu, Cloudflare, Figma, Miro, Web Services, German" />
         <link rel="canonical" href={window.location.origin + '/'} />
         <meta property="og:title" content="MinasaurV" />
         <meta property="og:description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
@@ -197,16 +197,17 @@ export default function Home() {
                   <li>Web applications</li>
                   <li>Chatbots</li>
                   <li>Mods &amp; Plugins</li>
-                  <li>Scripts to make my life easier (I'm lazy)</li>
+                  <li>Scripts to make my life easier</li>
                 </ul>
               </div>
               <div className="bg-teal-900/30 border border-teal-800 rounded-lg p-4">
                 <h4 className="text-lg font-semibold text-teal-200 mb-2">Hobbies</h4>
                 <ul className="list-disc pl-5 space-y-1 text-teal-100/90">
-                  <li>Drawing pixel art</li>
-                  <li>Playing videogames</li>
+                  <li>Studying German</li>
+                  <li>Creating pixel art</li>
+                  <li>Practicing skateboarding</li>
+                  <li>Playing video games</li>
                   <li>Collecting Pokémon cards</li>
-                  <li>Learning German</li>
                 </ul>
               </div>
               <div className="bg-fuchsia-900/30 border border-fuchsia-800 rounded-lg p-4">
@@ -405,29 +406,44 @@ export default function Home() {
           </section>
           <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-teal-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-400">
             <h3 className="text-2xl font-bold text-teal-300 mb-4">Skills & Tech Stack</h3>
-            <div className="flex flex-col md:flex-row gap-8 justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <h4 className="text-lg font-semibold text-purple-200 mb-2 text-center">Languages</h4>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <span title="HTML" className="flex items-center gap-2 bg-purple-800/60 text-purple-100 px-4 py-2 rounded-full font-semibold shadow"><FaHtml5 className="text-purple-200" /> HTML</span>
-                  <span title="CSS" className="flex items-center gap-2 bg-indigo-800/60 text-indigo-100 px-4 py-2 rounded-full font-semibold shadow"><FaCss3Alt className="text-indigo-200" /> CSS</span>
-                  <span title="JavaScript" className="flex items-center gap-2 bg-yellow-700/40 text-yellow-100 px-4 py-2 rounded-full font-semibold shadow"><FaJs className="text-yellow-200" /> JavaScript</span>
-                  <span title="Java" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><FaJava className="text-blue-200" /> Java</span>
-                  <span title="Lua" className="flex items-center gap-2 bg-blue-800/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><SiLua className="text-blue-200" /> Lua</span>
-                  <span title="C#" className="flex items-center gap-2 bg-teal-900/60 text-teal-100 px-4 py-2 rounded-full font-semibold shadow"><TbBrandCSharp className="text-teal-200" /> C#</span>
-                  <span title="Python" className="flex items-center gap-2 bg-green-800/60 text-green-100 px-4 py-2 rounded-full font-semibold shadow"><FaPython className="text-green-200" /> Python</span>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <span title="HTML" className="flex items-center gap-2 bg-purple-800/60 text-purple-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaHtml5 className="text-purple-200" /> HTML</span>
+                  <span title="CSS" className="flex items-center gap-2 bg-indigo-800/60 text-indigo-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaCss3Alt className="text-indigo-200" /> CSS</span>
+                  <span title="JavaScript" className="flex items-center gap-2 bg-yellow-700/40 text-yellow-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaJs className="text-yellow-200" /> JavaScript</span>
+                  <span title="C#" className="flex items-center gap-2 bg-teal-900/60 text-teal-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><TbBrandCSharp className="text-teal-200" /> C#</span>
+                  <span title="Python" className="flex items-center gap-2 bg-green-800/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaPython className="text-green-200" /> Python</span>
+                  <span title="Java" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaJava className="text-blue-200" /> Java</span>
+                  <span title="SQL" className="flex items-center gap-2 bg-orange-800/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaDatabase className="text-orange-200" /> SQL</span>
+                  <span title="Lua" className="flex items-center gap-2 bg-blue-800/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiLua className="text-blue-200" /> Lua</span>
                 </div>
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-teal-200 mb-2 text-center">Frameworks</h4>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <span title="React" className="flex items-center gap-2 bg-cyan-900/60 text-cyan-100 px-4 py-2 rounded-full font-semibold shadow"><FaReact className="text-cyan-200" /> React</span>
-                  <span title="Vue.js" className="flex items-center gap-2 bg-green-900/60 text-green-100 px-4 py-2 rounded-full font-semibold shadow"><FaVuejs className="text-green-200" /> Vue.js</span>
-                  <span title="Tailwind CSS" className="flex items-center gap-2 bg-teal-800/60 text-teal-100 px-4 py-2 rounded-full font-semibold shadow"><SiTailwindcss className="text-teal-200" /> Tailwind CSS</span>
-                  <span title="Node.js" className="flex items-center gap-2 bg-lime-900/60 text-lime-100 px-4 py-2 rounded-full font-semibold shadow"><FaNodeJs className="text-lime-200" /> Node.js</span>
-                  <span title="Express" className="flex items-center gap-2 bg-gray-800/60 text-gray-100 px-4 py-2 rounded-full font-semibold shadow"><SiExpress className="text-gray-200" /> Express</span>
-                  <span title=".NET MAUI" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><SiDotnet className="text-blue-200" /> .NET MAUI</span>
-                  <span title="MySQL" className="flex items-center gap-2 bg-blue-700/60 text-blue-100 px-4 py-2 rounded-full font-semibold shadow"><SiMysql className="text-blue-200" /> MySQL</span>
+                <h4 className="text-lg font-semibold text-teal-200 mb-2 text-center">Web Development</h4>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <span title="React" className="flex items-center gap-2 bg-cyan-900/60 text-cyan-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaReact className="text-cyan-200" /> React</span>
+                  <span title="ASP.NET" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiDotnet className="text-blue-200" /> ASP.NET</span>
+                  <span title="Vue.js" className="flex items-center gap-2 bg-green-900/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaVuejs className="text-green-200" /> Vue.js</span>
+                  <span title="Express.js" className="flex items-center gap-2 bg-gray-800/60 text-gray-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiExpress className="text-gray-200" /> Express.js</span>
+                  <span title="Django" className="flex items-center gap-2 bg-green-700/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiDjango className="text-green-200" /> Django</span>
+                  <span title="Tailwind CSS" className="flex items-center gap-2 bg-teal-800/60 text-teal-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiTailwindcss className="text-teal-200" /> Tailwind CSS</span>
+                  <span title="Node.js" className="flex items-center gap-2 bg-lime-900/60 text-lime-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaNodeJs className="text-lime-200" /> Node.js</span>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-indigo-200 mb-2 text-center">Databases & Tools</h4>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <span title="T-SQL" className="flex items-center gap-2 bg-red-800/60 text-red-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaDatabase className="text-red-200" /> T-SQL</span>
+                  <span title="MySQL" className="flex items-center gap-2 bg-blue-700/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiMysql className="text-blue-200" /> MySQL</span>
+                  <span title="MongoDB" className="flex items-center gap-2 bg-green-700/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiMongodb className="text-green-200" /> MongoDB</span>
+                  <span title="Git" className="flex items-center gap-2 bg-orange-800/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiGit className="text-orange-200" /> Git</span>
+                  <span title="NGINX" className="flex items-center gap-2 bg-green-800/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiNginx className="text-green-200" /> NGINX</span>
+                  <span title="Ubuntu" className="flex items-center gap-2 bg-orange-700/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaUbuntu className="text-orange-200" /> Ubuntu</span>
+                  <span title="Cloudflare" className="flex items-center gap-2 bg-orange-600/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiCloudflare className="text-orange-200" /> Cloudflare</span>
+                  <span title="Figma" className="flex items-center gap-2 bg-purple-800/60 text-purple-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaFigma className="text-purple-200" /> Figma</span>
+                  <span title="Miro" className="flex items-center gap-2 bg-indigo-800/60 text-indigo-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiMiro className="text-indigo-200" /> Miro</span>
                 </div>
               </div>
             </div>
