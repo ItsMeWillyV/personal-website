@@ -142,7 +142,7 @@ export default function Home() {
         <main className="flex flex-col items-center justify-center flex-1 w-full px-4 py-12 md:py-20 z-10 relative">
           <img 
             src={portrait}
-            alt="A young woman with dark-brown hair and eyes smiling warmly." 
+            alt="Portrait of Wilhelmina Vanderpool" 
             className="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-lg mb-6 object-cover border-4 border-transparent bg-gradient-to-br from-purple-400 via-indigo-500 to-teal-400 p-1 image-render-pixelated animate-spin-in"
             style={{ backgroundClip: 'padding-box, border-box', backgroundOrigin: 'border-box' }}
           />
