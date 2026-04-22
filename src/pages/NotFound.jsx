@@ -26,11 +26,11 @@ export default function NotFound() {
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black text-white relative overflow-hidden">
         <Header />
         <Bubbles />
-        <div className="flex flex-1 flex-col items-center justify-center w-full z-10 px-4 py-12 md:py-24">
+        <main id="main-content" tabIndex="-1" className="flex flex-1 flex-col items-center justify-center w-full z-10 px-4 py-12 md:py-24">
           <div className="flex flex-col items-center bg-black/40 rounded-3xl shadow-2xl p-8 md:p-16 border border-purple-800 backdrop-blur-md">
             <img 
               src={warningIcon}
-              alt="warning"
+              alt="Warning icon"
               className="w-32 h-32 md:w-48 md:h-48 mb-8 object-contain drop-shadow-lg animate-spin-in image-render-pixelated"
               style={{ imageRendering: 'pixelated' }}
             />
@@ -41,7 +41,7 @@ export default function NotFound() {
               Go Home
             </Link>
           </div>
-        </div>
+        </main>
         <Footer />
       </div>
     </>

@@ -51,16 +51,20 @@ export default function Home() {
       answer: "Tech2Gether is the tech club at Ozarks Technical Community College. We focus on bringing together students interested in technology, programming, and cybersecurity. We organize workshops and tech talks to help students grow their skills and engage with industry professionals."
     },
     {
-      question: "What kind of projects do you enjoy working on?",
-      answer: "I enjoy building practical applications that solve real-world problems, and love adding new weapons to my development arsenal."
+    question: "What kind of projects do you enjoy working on?",
+    answer: "I enjoy building practical applications that solve real-world problems. I especially like working on full-stack web apps, experimenting with new technologies, and creating tools that improve workflows or user experience."
     },
     {
-      question: "Are you available for freelance work?",
-      answer: "As a full-time student who has many responsibilities, I have limited availability, but I'm open to discussing interesting projects that align with my goals and expertise. Feel free to reach out via LinkedIn."
+      question: "How do you approach learning new technologies?",
+      answer: "I focus on learning by building. When I encounter a new language or tool, I apply it in a small project and refine my approach through iteration and feedback. I'm comfortable adapting to new systems and enjoy continuously improving my skill set."
+    },
+    {
+      question: "How do you approach writing and maintaining documentation?",
+      answer: "I aim to write clear, concise documentation that makes systems easier to understand and maintain. Whether it's code comments or a readme file, I focus on making information accessible for both current and future developers."
     },
     {
       question: "What are your future career goals?",
-      answer: "I'm focused on completing my Computer Information Science degree while gaining practical experience through projects and leadership roles. I'm particularly interested in fullstack development and exploring opportunities in software engineering after graduation."
+      answer: "I'm focused on completing my Computer Information Science degree while gaining hands-on experience through projects and leadership roles. My goal is to work in software engineering, with a strong interest in full-stack development and building impactful applications."
     }
   ];
 
@@ -139,7 +143,7 @@ export default function Home() {
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
         <Header />
         <Bubbles />
-        <main className="flex flex-col items-center justify-center flex-1 w-full px-4 py-12 md:py-20 z-10 relative">
+        <main id="main-content" tabIndex="-1" className="flex flex-col items-center justify-center flex-1 w-full px-4 py-12 md:py-20 z-10 relative">
           <img 
             src={portrait}
             alt="Portrait of Wilhelmina Vanderpool" 
@@ -152,7 +156,7 @@ export default function Home() {
               href="https://en.pronouns.page/@minasaur"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 border border-purple-900 text-purple-100 text-sm font-semibold shadow-lg transition-all duration-200 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-purple-800/50 no-underline"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 border border-purple-900 text-purple-100 text-sm font-semibold shadow-lg transition-all duration-200 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-teal-300 no-underline"
               aria-label={`Pronouns: she/her`}
               title="Pronouns: she/her"
             >
@@ -221,7 +225,7 @@ export default function Home() {
                       href="https://en.pronouns.page/@minasaur"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline decoration-fuchsia-400/60 underline-offset-2 hover:decoration-fuchsia-200"
+                      className="underline decoration-fuchsia-400/60 underline-offset-2 hover:decoration-fuchsia-200 focus:outline-none focus:ring-2 focus:ring-teal-300 rounded"
                     >
                       she/her
                     </a>
@@ -268,13 +272,17 @@ export default function Home() {
                       <p className="text-purple-100 text-sm mb-2 line-clamp-2">{project.description}</p>
                     </div>
                     <div className="flex flex-wrap gap-2 justify-center">
-                      {project.buttons.map((button, i) => (
+                      {(project.buttons || [])
+                        .filter((button, i, arr) => (
+                          i === arr.findIndex((b) => b.url === button.url && b.text === button.text)
+                        ))
+                        .map((button, i) => (
                         <a
-                          key={i}
+                          key={`${button.url}-${button.text}-${i}`}
                           href={button.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block px-4 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform whitespace-nowrap text-center mx-1 w-full md:w-auto"
+                          className="inline-block px-4 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform whitespace-nowrap text-center mx-1 w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-teal-300"
                         >
                           {button.text}
                         </a>
@@ -285,7 +293,7 @@ export default function Home() {
               </ul>
             )}
             <div className="mt-6 text-center md:text-right">
-              <a href="/projects" className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform">See All Projects</a>
+              <a href="/projects" className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300">See All Projects</a>
             </div>
           </section>
           <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-indigo-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-300">
@@ -342,6 +350,8 @@ export default function Home() {
                     detailText = `Forked to ${event.payload.forkee.full_name}`;
                     detailLink = event.payload.forkee.html_url || detailLink;
                   }
+
+                  const shouldShowDetailLink = detailText && detailLink && detailLink !== repoUrl;
                   
                   return (
                     <li
@@ -352,7 +362,7 @@ export default function Home() {
                       <div className="flex items-center justify-between gap-4">
                         <img
                           src={event.actor?.avatar_url}
-                          alt={event.actor?.display_login || 'avatar'}
+                          alt={`GitHub avatar for ${event.actor?.display_login || 'user'}`}
                           className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 border border-indigo-600 object-cover"
                         />
                         <div className="flex-1 min-w-0">
@@ -365,7 +375,7 @@ export default function Home() {
                           >
                             {event.repo?.name}
                           </a>
-                          {detailText && (
+                          {shouldShowDetailLink && (
                             <a
                               href={detailLink}
                               target="_blank"
@@ -375,10 +385,13 @@ export default function Home() {
                               {detailText}
                             </a>
                           )}
-                          <p className="text-indigo-400/60 text-xs mt-1">{getTimeSince(event.created_at)}</p>
+                          {detailText && !shouldShowDetailLink && (
+                            <p className="text-indigo-300/80 text-sm block mt-1 break-words">{detailText}</p>
+                          )}
+                          <p className="text-indigo-300 text-xs mt-1">{getTimeSince(event.created_at)}</p>
                         </div>
                         <div className="flex-shrink-0">
-                          <span className="text-xl">
+                          <span aria-hidden="true" className="text-xl">
                             {event.type === 'PushEvent' ? <FaGitAlt className="text-green-400" /> : 
                              event.type === 'CreateEvent' ? <FaPlus className="text-blue-400" /> : 
                              event.type === 'IssuesEvent' ? <FaBug className="text-red-400" /> : 
@@ -398,7 +411,7 @@ export default function Home() {
                 href="https://github.com/MinasaurV" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform"
+                className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300"
               >
                 View GitHub Profile
               </a>
@@ -454,8 +467,12 @@ export default function Home() {
               {faqData.map((faq, index) => (
                 <div key={index} className="border border-green-800/50 rounded-lg overflow-hidden">
                   <button
+                    type="button"
                     onClick={() => toggleFAQ(index)}
-                    className="w-full px-6 py-4 text-left bg-green-900/20 hover:bg-green-900/30 transition-colors flex items-center justify-between cursor-pointer"
+                    aria-expanded={openFAQ === index}
+                    aria-controls={`faq-panel-${index}`}
+                    id={`faq-trigger-${index}`}
+                    className="w-full px-6 py-4 text-left bg-green-900/20 hover:bg-green-900/30 transition-colors flex items-center justify-between cursor-pointer focus:outline-none focus-visible:bg-green-900/40 focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal-200/90"
                   >
                     <span className="text-green-100 font-medium">{faq.question}</span>
                     {openFAQ === index ? (
@@ -465,6 +482,10 @@ export default function Home() {
                     )}
                   </button>
                   <div 
+                    id={`faq-panel-${index}`}
+                    role="region"
+                    aria-labelledby={`faq-trigger-${index}`}
+                    hidden={openFAQ !== index}
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
                       openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}

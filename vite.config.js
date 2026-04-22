@@ -12,11 +12,11 @@ export default defineConfig({
   server: {
     proxy: {
       // Proxy all requests starting with / to your local API server
-      'https://api.willy-v.com': {
+      'https://api.minasaur.com': {
         target: 'http://localhost:8080',
         changeOrigin: true,
         secure: false,
-        rewrite: path => path.replace(/^https:\/\/api\.willy-v\.com/, ''),
+        rewrite: path => path.replace(/^https:\/\/api\.minasaur\.com/, ''),
       },
       '/internal': 'http://localhost:8080'
     }

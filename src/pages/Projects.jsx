@@ -45,7 +45,7 @@ export default function Projects() {
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
         <Header />
         <Bubbles />
-        <main className="flex flex-col items-center justify-center flex-1 w-full px-4 py-12 md:py-20 z-10 relative">
+        <main id="main-content" tabIndex="-1" className="flex flex-col items-center justify-center flex-1 w-full px-4 py-12 md:py-20 z-10 relative">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
             My Projects
           </h1>
@@ -84,13 +84,17 @@ export default function Projects() {
                     </div>
                   </div>
                   <div className="w-full flex justify-center items-center pointer-events-auto">
-                    {project.buttons.map((button, i) => (
+                    {(project.buttons || [])
+                      .filter((button, i, arr) => (
+                        i === arr.findIndex((b) => b.url === button.url && b.text === button.text)
+                      ))
+                      .map((button, i) => (
                       <a
-                        key={i}
+                        key={`${button.url}-${button.text}-${i}`}
                         href={button.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block px-5 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform text-center cursor-pointer mx-2"
+                        className="inline-block px-5 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform text-center cursor-pointer mx-2 focus:outline-none focus:ring-2 focus:ring-teal-300"
                         style={{ width: 'auto' }}
                         tabIndex={0}
                       >
