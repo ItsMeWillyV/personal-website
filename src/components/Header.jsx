@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaFolderOpen, FaCode } from 'react-icons/fa';
+import wordmark from '../assets/MinasaurV_Wordmark.svg';
 
 export default function Header() {
   const location = useLocation();
@@ -19,11 +20,9 @@ export default function Header() {
       >
         Skip to main content
       </a>
-      <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4" aria-label="Primary">
+      <nav className="max-w-5xl mx-auto flex items-center justify-between px-4 py-2 md:px-6 md:py-4" aria-label="Primary">
         <Link to="/" className="flex items-center gap-3 group">
-          <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-teal-300 via-indigo-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg group-hover:scale-105 transition-transform duration-200 bg-[length:200%_100%] bg-left group-hover:bg-right bg-gradient-move">
-            MinasaurV
-          </span>
+          <img src={wordmark} alt="MinasaurV" className="h-10 md:h-12 lg:h-14 object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-200" />
         </Link>
         <button
           className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-teal-400"
@@ -51,7 +50,7 @@ export default function Header() {
       </nav>
       {menuOpen && (
         <div id="mobile-navigation" className="md:hidden transition-all duration-300 overflow-hidden bg-transparent top-0 z-40">
-          <ul className="flex flex-row flex-wrap justify-center items-center gap-4 py-4">
+          <ul className="flex flex-row flex-wrap justify-center items-center gap-4 py-3">
             {navLinks.map(link => (
               <li key={link.path}>
                 <Link

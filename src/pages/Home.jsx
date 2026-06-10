@@ -4,42 +4,19 @@ import Bubbles from '../components/Bubbles';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import portrait from '../assets/portrait.png';
-import { API_DOMAIN } from '../api';
-import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython, FaDatabase, FaUbuntu, FaFigma } from 'react-icons/fa';
+import { PROJECTS_DATA } from '../data/projectsData';
+import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython, FaDatabase, FaUbuntu, FaFigma, FaDiscord, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { SiLua, SiTailwindcss, SiExpress, SiDotnet, SiMysql, SiMongodb, SiDjango, SiGit, SiNginx, SiCloudflare, SiMiro } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import axios from 'axios';
 
 export default function Home() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const projects = PROJECTS_DATA.projects.slice(-3);
+  const getProjectImage = (id) => new URL(`../assets/projects/${id}.png`, import.meta.url).href;
   const [openFAQ, setOpenFAQ] = useState(null);
   const [githubActivity, setGithubActivity] = useState([]);
   const [githubError, setGithubError] = useState(null);
   const [githubLoading, setGithubLoading] = useState(true);
-  const Splashes = [
-    'Now with more purple!',
-    'In the GitHub, straight up "forking it"',
-    "We taught the rocks how to count and we've regretted it ever since.",
-    "Not afraid to commit!",
-    "May the source be with you.",
-    "Segmentation fault (core dumped)",
-    "Database_2 - The SQL",
-    "I used to be an adventurer like you, then I took a merge conflict to the knee.",
-    "git push origin main --force",
-    "sudo rm -rf /",
-    "20% cooler!"
-
-  ];
-  const getRandomSplash = () => {
-    return Splashes[Math.floor(Math.random() * Splashes.length)];
-  };
-  const [splash, setSplash] = useState(() => getRandomSplash());
-
-  const shuffleSplash = () => {
-    setSplash(() => getRandomSplash());
-  };
 
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index);
@@ -48,11 +25,11 @@ export default function Home() {
   const faqData = [
     {
       question: "What is Tech2Gether?",
-      answer: "Tech2Gether is the tech club at Ozarks Technical Community College. We focus on bringing together students interested in technology, programming, and cybersecurity. We organize workshops and tech talks to help students grow their skills and engage with industry professionals."
+      answer: "Tech2Gether is the tech club at Ozarks Technical Community College, which focuses on bringing together students interested in technology, programming, and cybersecurity. They organize workshops and tech talks to help students grow their skills and engage with industry professionals. If you're a current student at Ozarks Tech interested in tech, it's a great community to be a part of! If you're an alumnus or industry professional, they also welcome guest speakers and sponsors. Visit the Tech2Gether website for more info on how to get involved!"
     },
     {
-    question: "What kind of projects do you enjoy working on?",
-    answer: "I enjoy building practical applications that solve real-world problems. I especially like working on full-stack web apps, experimenting with new technologies, and creating tools that improve workflows or user experience."
+      question: "What kind of projects do you enjoy working on?",
+      answer: "I enjoy building practical applications that solve real-world problems. I especially like working on full-stack web apps, experimenting with new technologies, and creating tools that improve workflows or user experience."
     },
     {
       question: "How do you approach learning new technologies?",
@@ -69,19 +46,6 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    axios.get(`${API_DOMAIN}/projects`)
-      .then(res => {
-        setProjects(res.data.projects?.slice(-3) || []);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
-
     // Fetch GitHub activity
     setGithubLoading(true);
     setGithubError(null);
@@ -129,24 +93,24 @@ export default function Home() {
     <>
       <Helmet key={window.location.pathname}>
         <title>Home</title>
-        <meta name="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
-        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Information Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Ozarks Tech, Tech2Gether, Student, Programmer, Developer, Pixel Art, Skateboarding, C#, Python, Java, SQL, Lua, ASP.NET, Django, Vue.js, Express.js, Tailwind CSS, T-SQL, MySQL, MongoDB, Git, NGINX, Ubuntu, Cloudflare, Figma, Miro, Web Services, German" />
+        <meta name="description" content="Welcome to the website of Wilhelmina Vanderpool, a Computer Information Science Student & Junior Developer." />
+        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Information Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Ozarks Tech, Tech2Gether, Student, Programmer, Developer, Pixel Art, Skateboarding, C#, Python, Java, SQL, Lua, ASP.NET, Django, Vue.js, Express.js, Tailwind CSS, T-SQL, MySQL, MongoDB, Git, NGINX, Ubuntu, Cloudflare, Figma, Miro" />
         <link rel="canonical" href={window.location.origin + '/'} />
         <meta property="og:title" content="MinasaurV" />
-        <meta property="og:description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
+        <meta property="og:description" content="Welcome to the website of Wilhelmina Vanderpool, a Computer Information Science Student & Junior Developer." />
         <meta property="og:url" content={window.location.origin + '/'} />
-  <meta property="og:image" content={portrait} />
+        <meta property="og:image" content={portrait} />
         <meta itemProp="name" content="MinasaurV" />
-        <meta itemProp="description" content="Welcome to the website of Wilhelmina Vanderpool, a Web Developer and Student Leader." />
+        <meta itemProp="description" content="Welcome to the website of Wilhelmina Vanderpool, a Computer Information Science Student & Junior Developer." />
         <meta itemProp="image" content={portrait} />
       </Helmet>
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
         <Header />
         <Bubbles />
         <main id="main-content" tabIndex="-1" className="flex flex-col items-center justify-center flex-1 w-full px-4 py-12 md:py-20 z-10 relative">
-          <img 
+          <img
             src={portrait}
-            alt="Portrait of Wilhelmina Vanderpool" 
+            alt="Portrait of Wilhelmina Vanderpool"
             className="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-lg mb-6 object-cover border-4 border-transparent bg-gradient-to-br from-purple-400 via-indigo-500 to-teal-400 p-1 image-render-pixelated animate-spin-in"
             style={{ backgroundClip: 'padding-box, border-box', backgroundOrigin: 'border-box' }}
           />
@@ -163,120 +127,87 @@ export default function Home() {
               🏳️‍⚧️ she/her
             </a>
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mt-2 mb-1 text-center">Web Developer & Student Leader</h2>
-            <div>
-              <button
-                type="button"
-                onClick={shuffleSplash}
-                className="text-xs md:text-sm font-medium text-indigo-200/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-300/40 rounded px-2 py-0.5 cursor-pointer"
-                aria-label="Shuffle splash text"
-                title="Click to shuffle"
-              >
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-indigo-200 to-teal-200">
-                  {splash}
-                </span>
-              </button>
-            </div>
+          <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mt-2 mb-1 text-center">Computer Information Science Student & Junior Developer</h2>
           <section className="w-full max-w-3xl mx-auto mt-6 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in">
             <h3 className="text-2xl font-bold text-purple-300 mb-4 text-left">About Me</h3>
-            <p className="text-purple-100 leading-relaxed mb-6 text-left">
-              Hello there! I'm Mina, a Computer Information Science student at Ozarks Technical Community College (Ozarks Tech). I work in Ozarks Tech's Web Services department and lead the campus tech club, Tech2Gether. I love building useful things and learning new technologies.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-purple-900/30 border border-purple-800 rounded-lg p-4">
-                <h4 className="text-lg font-semibold text-purple-200 mb-2">Currently</h4>
-                <ul className="list-disc pl-5 space-y-1 text-purple-100/90">
-                  <li>Ozarks Tech
-                    <ul className="list-disc pl-5 space-y-1 text-purple-100/90">
-                      <li>CIS student</li>
-                      <li>Web Services Office Assistant</li>
-                      <li>President of Tech2Gether (Tech Club)</li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div className="bg-indigo-900/30 border border-indigo-800 rounded-lg p-4">
-                <h4 className="text-lg font-semibold text-indigo-200 mb-2">What I build</h4>
-                <ul className="list-disc pl-5 space-y-1 text-indigo-100/90">
-                  <li>Web applications</li>
-                  <li>Chatbots</li>
-                  <li>Mods &amp; Plugins</li>
-                  <li>Scripts to make my life easier</li>
-                </ul>
-              </div>
-              <div className="bg-teal-900/30 border border-teal-800 rounded-lg p-4">
-                <h4 className="text-lg font-semibold text-teal-200 mb-2">Hobbies</h4>
-                <ul className="list-disc pl-5 space-y-1 text-teal-100/90">
-                  <li>Studying German</li>
-                  <li>Creating pixel art</li>
-                  <li>Practicing skateboarding</li>
-                  <li>Playing video games</li>
-                  <li>Collecting Pokémon cards</li>
-                </ul>
-              </div>
-              <div className="bg-fuchsia-900/30 border border-fuchsia-800 rounded-lg p-4">
-                <h4 className="text-lg font-semibold text-fuchsia-200 mb-2">Fun facts</h4>
-                <ul className="list-disc pl-5 space-y-1 text-fuchsia-100/90">
-                  <li>18 years old</li>
-                  <li>
-                    Pronouns: 
-                    {' '}
-                    <a
-                      href="https://en.pronouns.page/@minasaur"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline decoration-fuchsia-400/60 underline-offset-2 hover:decoration-fuchsia-200 focus:outline-none focus:ring-2 focus:ring-teal-300 rounded"
-                    >
-                      she/her
-                    </a>
-                  </li>
-                  <li>You just lost The Game</li>
-                  <li>Favorite colors: purple and green</li>
-                </ul>
-              </div>
+            <h4 className="text-lg font-semibold text-teal-200 mb-2">Who I am</h4>
+            <p className="text-purple-100 leading-relaxed mb-4">Hello there! I'm Mina, a Computer Information Science student at Ozarks Technical Community College (Ozarks Tech).</p>
+            <h4 className="text-lg font-semibold text-purple-200 mb-2">What I build</h4>
+            <p className="text-purple-100 leading-relaxed mb-4">I build practical software and design web apps, databases, and tools that help people. I work with C#, Python, JavaScript, SQL, React, ASP.NET, Django, and other technologies, and enjoy learning new frameworks and approaches.</p>
+            <h4 className="text-lg font-semibold text-indigo-200 mb-2">Experience highlights</h4>
+            <p className="text-purple-100 leading-relaxed mb-4">I've contributed to a major overhaul of the Ozarks Tech website, including a WordPress migration and accessibility improvements to meet WCAG standards, content audits, and structural updates to improve usability.</p>
+            <h4 className="text-lg font-semibold text-fuchsia-200 mb-2">Leadership & community</h4>
+            <p className="text-purple-100 leading-relaxed mb-4">As President of Tech2Gether, I organized workshops, led outreach, and helped launch the club's first Hack2Gether hackathon. As the Website Project Lead, I led the development of the club's website, ensuring content stays up to date and accessible.</p>
+          </section>
+          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-pink-700 transition-opacity duration-1000 opacity-0 animate-fade-in delay-600">
+            <h3 className="text-2xl font-bold text-pink-300 mb-4">Connect With Me!</h3>
+            <p className="text-purple-100 mb-4">I'm always excited to learn something new, take on interesting challenges, and connect with others who are passionate about technology!</p>
+            <div className="flex gap-4 flex-wrap">
+              <a
+                href="mailto:mina@minasaur.com"
+                className="inline-flex items-center gap-3 px-4 py-2 bg-emerald-800/60 text-white rounded-full shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300"
+              >
+                <FaEnvelope className="text-emerald-200" />
+                Email
+              </a>
+              <a
+                href="https://www.linkedin.com/in/minasaur"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-4 py-2 bg-blue-800/60 text-white rounded-full shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300"
+              >
+                <FaLinkedin className="text-blue-300" />
+                LinkedIn
+              </a>
+              <a
+                href="http://discord.com/users/1109635837588680764"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-4 py-2 bg-gray-800/60 text-white rounded-full shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300"
+              >
+                <FaDiscord className="text-indigo-400" />
+                Discord
+              </a>
             </div>
           </section>
           <section className="w-full max-w-3xl mx-auto mt-12 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-200">
             <h3 className="text-2xl font-bold text-purple-300 mb-4">My Projects</h3>
-            {loading && <p className="text-white">Loading projects...</p>}
-            {!loading && error && <p className="text-red-500">Error: {error}</p>}
-            {!loading && !error && (
-              <ul className="space-y-4">
-                {projects.map((project, idx) => (
-                  <li
-                    key={project.id}
-                    className="bg-gradient-to-r from-purple-900 via-indigo-900 to-teal-900 rounded-lg p-4 shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl opacity-0 animate-fade-in"
-                    style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
-                  >
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-4 mb-2">
-                        <img
-                          src={`${API_DOMAIN}/images/projects/${project.id}.png`}
-                          alt={project.name + ' thumbnail'}
-                          className="w-14 h-14 object-cover rounded-md flex-shrink-0"
-                        />
-                        <div>
-                          <span className="text-lg font-semibold text-white block truncate">{project.name}</span>
-                          <div className="flex flex-wrap gap-2 mt-1">
-                            {project.tags && project.tags.map((tag, i) => (
-                              <span
-                                key={i}
-                                className="bg-teal-700/30 text-teal-200 px-2 py-0.5 rounded-full text-xs font-medium"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
+            <ul className="space-y-4">
+              {projects.map((project, idx) => (
+                <li
+                  key={project.id}
+                  className="bg-gradient-to-r from-purple-900 via-indigo-900 to-teal-900 rounded-lg p-4 shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl opacity-0 animate-fade-in"
+                  style={{ animationDelay: `${idx * 0.15 + 0.1}s` }}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-4 mb-2">
+                      <img
+                        src={getProjectImage(project.id)}
+                        alt={project.name + ' thumbnail'}
+                        className="w-14 h-14 object-cover rounded-md flex-shrink-0"
+                      />
+                      <div>
+                        <span className="text-lg font-semibold text-white block truncate">{project.name}</span>
+                        <div className="flex flex-wrap gap-2 mt-1">
+                          {project.tags && project.tags.map((tag, i) => (
+                            <span
+                              key={i}
+                              className="bg-teal-700/30 text-teal-200 px-2 py-0.5 rounded-full text-xs font-medium"
+                            >
+                              {tag}
+                            </span>
+                          ))}
                         </div>
                       </div>
-                      <p className="text-purple-100 text-sm mb-2 line-clamp-2">{project.description}</p>
                     </div>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {(project.buttons || [])
-                        .filter((button, i, arr) => (
-                          i === arr.findIndex((b) => b.url === button.url && b.text === button.text)
-                        ))
-                        .map((button, i) => (
+                    <p className="text-purple-100 text-sm mb-2 line-clamp-2">{project.description}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {(project.buttons || [])
+                      .filter((button, i, arr) => (
+                        i === arr.findIndex((b) => b.url === button.url && b.text === button.text)
+                      ))
+                      .map((button, i) => (
                         <a
                           key={`${button.url}-${button.text}-${i}`}
                           href={button.url}
@@ -287,11 +218,10 @@ export default function Home() {
                           {button.text}
                         </a>
                       ))}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
+                  </div>
+                </li>
+              ))}
+            </ul>
             <div className="mt-6 text-center md:text-right">
               <a href="/projects" className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300">See All Projects</a>
             </div>
@@ -300,7 +230,7 @@ export default function Home() {
             <h3 className="text-2xl font-bold text-indigo-300 mb-4">Recent GitHub Activity</h3>
             {githubLoading && (
               <div className="space-y-3">
-                {[1,2,3].map((s) => (
+                {[1, 2, 3].map((s) => (
                   <div key={s} className="animate-pulse bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 rounded-lg p-4 shadow">
                     <div className="h-4 bg-indigo-700/30 rounded w-3/4 mb-2" />
                     <div className="h-3 bg-indigo-700/20 rounded w-1/2" />
@@ -319,14 +249,14 @@ export default function Home() {
                 {githubActivity.map((event, idx) => {
                   const eventType = event.type.replace('Event', '');
                   const repoUrl = `https://github.com/${event.repo?.name}`;
-                  
+
                   let detailText = '';
                   let detailLink = repoUrl;
-                  
+
                   if (event.type === 'PushEvent') {
                     const branchRef = event.payload?.ref || '';
                     const branch = branchRef.replace('refs/heads/', '');
-                    
+
                     if (branch) {
                       detailText = branch;
                       detailLink = `${repoUrl}/tree/${branch}`;
@@ -352,7 +282,7 @@ export default function Home() {
                   }
 
                   const shouldShowDetailLink = detailText && detailLink && detailLink !== repoUrl;
-                  
+
                   return (
                     <li
                       key={event.id}
@@ -392,12 +322,12 @@ export default function Home() {
                         </div>
                         <div className="flex-shrink-0">
                           <span aria-hidden="true" className="text-xl">
-                            {event.type === 'PushEvent' ? <FaGitAlt className="text-green-400" /> : 
-                             event.type === 'CreateEvent' ? <FaPlus className="text-blue-400" /> : 
-                             event.type === 'IssuesEvent' ? <FaBug className="text-red-400" /> : 
-                             event.type === 'PullRequestEvent' ? <FaCodeBranch className="text-purple-400" /> : 
-                             event.type === 'WatchEvent' ? <FaStar className="text-yellow-400" /> : 
-                             event.type === 'ForkEvent' ? <FaCodeBranch className="text-teal-400" /> : <FaCode className="text-indigo-400" />}
+                            {event.type === 'PushEvent' ? <FaGitAlt className="text-green-400" /> :
+                              event.type === 'CreateEvent' ? <FaPlus className="text-blue-400" /> :
+                                event.type === 'IssuesEvent' ? <FaBug className="text-red-400" /> :
+                                  event.type === 'PullRequestEvent' ? <FaCodeBranch className="text-purple-400" /> :
+                                    event.type === 'WatchEvent' ? <FaStar className="text-yellow-400" /> :
+                                      event.type === 'ForkEvent' ? <FaCodeBranch className="text-teal-400" /> : <FaCode className="text-indigo-400" />}
                           </span>
                         </div>
                       </div>
@@ -407,8 +337,8 @@ export default function Home() {
               </ul>
             )}
             <div className="mt-6 text-center md:text-right">
-              <a 
-                href="https://github.com/MinasaurV" 
+              <a
+                href="https://github.com/MinasaurV"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300"
@@ -481,14 +411,13 @@ export default function Home() {
                       <FaChevronDown className="text-green-300 flex-shrink-0" />
                     )}
                   </button>
-                  <div 
+                  <div
                     id={`faq-panel-${index}`}
                     role="region"
                     aria-labelledby={`faq-trigger-${index}`}
                     hidden={openFAQ !== index}
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      }`}
                   >
                     <div className="px-6 py-4 bg-green-950/30 border-t border-green-800/50">
                       <p className="text-green-100 leading-relaxed">{faq.answer}</p>
