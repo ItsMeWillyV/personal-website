@@ -129,7 +129,7 @@ export default function Home() {
           </div>
           <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mt-2 mb-1 text-center">Full Stack Developer @ Cold Brew Code <br/>
 Computer Science Student @ Ozarks Tech</h2>
-          <section className="w-full max-w-3xl mx-auto mt-6 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in">
+          <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in">
             <h3 className="text-2xl font-bold text-purple-300 mb-4 text-left">About Me</h3>
             <h4 className="text-lg font-semibold text-teal-200 mb-2">Who I am</h4>
             <p className="text-purple-100 leading-relaxed mb-4">Hi! I'm Mina, a Computer Science student at Ozarks Technical Community College and a Full Stack Developer at Cold Brew Code. I'm passionate about building software that is intuitive, accessible, and enjoyable to use.</p>
@@ -140,7 +140,7 @@ Computer Science Student @ Ozarks Tech</h2>
             <h4 className="text-lg font-semibold text-fuchsia-200 mb-2">Community & Leadership</h4>
             <p className="text-purple-100 leading-relaxed mb-4">I'm an active member of the Springfield technology community. I regularly attend Springfield Devs meetups to connect with other developers, learn about new technologies, and share ideas. I'm also an active member of SGFSEC, where I continue expanding my knowledge of cybersecurity.<br/><br/>I previously served as President of Tech2Gether, where I organized workshops, coordinated outreach efforts, and helped launch the organization's first Hack2Gether hackathon. As Website Project Lead, I led development efforts for the club's website and worked closely with student leaders to support the organization's goals through technology.</p>
           </section>
-          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-pink-700 transition-opacity duration-1000 opacity-0 animate-fade-in delay-600">
+          <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-pink-700 transition-opacity duration-1000 opacity-0 animate-fade-in delay-600">
             <h3 className="text-2xl font-bold text-pink-300 mb-4">Connect With Me!</h3>
             <p className="text-purple-100 mb-4">I'm always excited to learn something new, take on interesting challenges, and connect with others who are passionate about technology!</p>
             <div className="flex gap-4 flex-wrap">
@@ -171,7 +171,7 @@ Computer Science Student @ Ozarks Tech</h2>
               </a>
             </div>
           </section>
-          <section className="w-full max-w-3xl mx-auto mt-12 mb-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-200">
+          <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-200">
             <h3 className="text-2xl font-bold text-purple-300 mb-4">My Projects</h3>
             <ul className="space-y-4">
               {projects.map((project, idx) => (
@@ -227,7 +227,7 @@ Computer Science Student @ Ozarks Tech</h2>
               <a href="/projects" className="inline-block px-6 py-2 bg-gradient-to-r from-purple-700 via-indigo-500 to-teal-500 text-white rounded-full font-semibold shadow hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-teal-300">See All Projects</a>
             </div>
           </section>
-          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-indigo-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-300">
+          <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-indigo-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-300">
             <h3 className="text-2xl font-bold text-indigo-300 mb-4">Recent GitHub Activity</h3>
             {githubLoading && (
               <div className="space-y-3">
@@ -348,7 +348,7 @@ Computer Science Student @ Ozarks Tech</h2>
               </a>
             </div>
           </section>
-          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-teal-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-400">
+          <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-teal-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-400">
             <h3 className="text-2xl font-bold text-teal-300 mb-4">Skills & Tech Stack</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
@@ -392,7 +392,7 @@ Computer Science Student @ Ozarks Tech</h2>
               </div>
             </div>
           </section>
-          <section className="w-full max-w-3xl mx-auto mb-12 bg-black/40 rounded-xl shadow-lg p-8 border border-green-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-500">
+          <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-green-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-500">
             <h3 className="text-2xl font-bold text-green-300 mb-6">Frequently Asked Questions</h3>
             <div className="space-y-4">
               {faqData.map((faq, index) => (
