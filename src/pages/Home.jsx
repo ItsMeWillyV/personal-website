@@ -123,8 +123,11 @@ export default function Home() {
               🏳️‍⚧️ she/her
             </a>
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mt-2 mb-1 text-center">Full Stack Developer @ Cold Brew Code <br/>
-Computer Science Student @ Ozarks Tech</h2>
+          <h2 className="text-xl md:text-2xl font-semibold text-teal-300 mt-2 mb-1 text-center">
+            Full Stack Developer @ Cold Brew Code 
+            <br/>
+            Computer Science Student @ Ozarks Tech
+          </h2>
           <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-purple-900 transition-opacity duration-1000 opacity-0 animate-fade-in">
             <h3 className="text-2xl font-bold text-purple-300 mb-4 text-left">About Me</h3>
             <h4 className="text-lg font-semibold text-teal-200 mb-2">Who I am</h4>
@@ -132,9 +135,18 @@ Computer Science Student @ Ozarks Tech</h2>
             <h4 className="text-lg font-semibold text-purple-200 mb-2">What I build</h4>
             <p className="text-purple-100 leading-relaxed mb-4">I design and develop web applications, databases, and software tools with a focus on usability, accessibility, and maintainability. My experience includes working with C#, Python, JavaScript, SQL, React, ASP.NET, Django, and modern web development practices. I enjoy solving problems, learning new technologies, and turning ideas into practical software solutions.</p>
             <h4 className="text-lg font-semibold text-indigo-200 mb-2">Professional Experience</h4>
-            <p className="text-purple-100 leading-relaxed mb-4">As a Full Stack Developer at Cold Brew Code, I help design and develop web applications and software products as part of a small development team. My work spans both development and UI/UX design, allowing me to contribute throughout the entire product development process.<br/><br/>Previously, I worked in Web Services at Ozarks Tech, where I contributed to a large-scale WordPress migration involving more than 8,000 webpages. I also supported accessibility improvements, content audits, and structural updates to improve usability and compliance with WCAG standards.</p>
+            <p className="text-purple-100 leading-relaxed mb-4">
+              As a Full Stack Developer at Cold Brew Code, I help design and develop web applications and software products as part of a small development team. My work spans both development and UI/UX design, allowing me to contribute throughout the entire product development process.
+              <br/>
+              <br/>
+              Previously, I worked in Web Services at Ozarks Tech, where I contributed to a large-scale WordPress migration involving more than 8,000 webpages. I also supported accessibility improvements, content audits, and structural updates to improve usability and compliance with WCAG standards.
+            </p>
             <h4 className="text-lg font-semibold text-fuchsia-200 mb-2">Community & Leadership</h4>
-            <p className="text-purple-100 leading-relaxed mb-4">I'm an active member of the Springfield technology community. I regularly attend Springfield Devs meetups to connect with other developers, learn about new technologies, and share ideas. I'm also an active member of SGFSEC, where I continue expanding my knowledge of cybersecurity.<br/><br/>I previously served as President of Tech2Gether, where I organized workshops, coordinated outreach efforts, and helped launch the organization's first Hack2Gether hackathon. As Website Project Lead, I led development efforts for the club's website and worked closely with student leaders to support the organization's goals through technology.</p>
+            <p className="text-purple-100 leading-relaxed mb-4">
+              I'm an active member of the Springfield technology community. I regularly attend Springfield Devs meetups to connect with other developers, learn about new technologies, and share ideas. I'm also an active member of SGFSEC, where I continue expanding my knowledge of cybersecurity.
+              <br/><br/>
+              I previously served as President of Tech2Gether, where I organized workshops, coordinated outreach efforts, and helped launch the organization's first Hack2Gether hackathon. As Website Project Lead, I led development efforts for the club's website and worked closely with student leaders to support the organization's goals through technology.
+            </p>
           </section>
           <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-pink-700 transition-opacity duration-1000 opacity-0 animate-fade-in delay-600">
             <h3 className="text-2xl font-bold text-pink-300 mb-4">Connect With Me!</h3>
