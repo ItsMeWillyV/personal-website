@@ -4,12 +4,58 @@ import Bubbles from '../components/Bubbles';
 import Accordion from '../components/Accordion';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import SkillTag from '../components/SkillTag';
 import portrait from '../assets/portrait.png';
 import { PROJECTS_DATA } from '../data/projectsData';
 import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython, FaDatabase, FaUbuntu, FaFigma, FaDiscord, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { SiLua, SiTailwindcss, SiExpress, SiDotnet, SiMysql, SiMongodb, SiDjango, SiGit, SiNginx, SiCloudflare, SiMiro } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import axios from 'axios';
+
+const skillSections = [
+  {
+    title: 'Languages',
+    titleClassName: 'text-purple-200',
+    items: [
+      { title: 'HTML', icon: FaHtml5, className: 'bg-purple-800/60 text-purple-100' },
+      { title: 'CSS', icon: FaCss3Alt, className: 'bg-indigo-800/60 text-indigo-100' },
+      { title: 'JavaScript', icon: FaJs, className: 'bg-yellow-700/40 text-yellow-100' },
+      { title: 'C#', icon: TbBrandCSharp, className: 'bg-teal-900/60 text-teal-100' },
+      { title: 'Python', icon: FaPython, className: 'bg-green-800/60 text-green-100' },
+      { title: 'Java', icon: FaJava, className: 'bg-blue-900/60 text-blue-100' },
+      { title: 'SQL', icon: FaDatabase, className: 'bg-orange-800/60 text-orange-100' },
+      { title: 'Lua', icon: SiLua, className: 'bg-blue-800/60 text-blue-100' },
+    ],
+  },
+  {
+    title: 'Web Development',
+    titleClassName: 'text-teal-200',
+    items: [
+      { title: 'React', icon: FaReact, className: 'bg-cyan-900/60 text-cyan-100' },
+      { title: 'ASP.NET', icon: SiDotnet, className: 'bg-blue-900/60 text-blue-100' },
+      { title: 'Vue.js', icon: FaVuejs, className: 'bg-green-900/60 text-green-100' },
+      { title: 'Express.js', icon: SiExpress, className: 'bg-gray-800/60 text-gray-100' },
+      { title: 'Django', icon: SiDjango, className: 'bg-green-700/60 text-green-100' },
+      { title: 'Tailwind CSS', icon: SiTailwindcss, className: 'bg-teal-800/60 text-teal-100' },
+      { title: 'Node.js', icon: FaNodeJs, className: 'bg-lime-900/60 text-lime-100' },
+    ],
+  },
+  {
+    title: 'Databases & Tools',
+    titleClassName: 'text-indigo-200',
+    items: [
+      { title: 'T-SQL', icon: FaDatabase, className: 'bg-red-800/60 text-red-100' },
+      { title: 'MySQL', icon: SiMysql, className: 'bg-blue-700/60 text-blue-100' },
+      { title: 'MongoDB', icon: SiMongodb, className: 'bg-green-700/60 text-green-100' },
+      { title: 'Git', icon: SiGit, className: 'bg-orange-800/60 text-orange-100' },
+      { title: 'NGINX', icon: SiNginx, className: 'bg-green-800/60 text-green-100' },
+      { title: 'Ubuntu', icon: FaUbuntu, className: 'bg-orange-700/60 text-orange-100' },
+      { title: 'Cloudflare', icon: SiCloudflare, className: 'bg-orange-600/60 text-orange-100' },
+      { title: 'Figma', icon: FaFigma, className: 'bg-purple-800/60 text-purple-100' },
+      { title: 'Miro', icon: SiMiro, className: 'bg-indigo-800/60 text-indigo-100' },
+    ],
+  },
+];
 
 export default function Home() {
   const projects = PROJECTS_DATA.projects.slice(-3);
@@ -359,45 +405,23 @@ export default function Home() {
           <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-teal-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-400">
             <h3 className="text-2xl font-bold text-teal-300 mb-4">Skills & Tech Stack</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <h4 className="text-lg font-semibold text-purple-200 mb-2 text-center">Languages</h4>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <span title="HTML" className="flex items-center gap-2 bg-purple-800/60 text-purple-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaHtml5 className="text-purple-200" /> HTML</span>
-                  <span title="CSS" className="flex items-center gap-2 bg-indigo-800/60 text-indigo-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaCss3Alt className="text-indigo-200" /> CSS</span>
-                  <span title="JavaScript" className="flex items-center gap-2 bg-yellow-700/40 text-yellow-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaJs className="text-yellow-200" /> JavaScript</span>
-                  <span title="C#" className="flex items-center gap-2 bg-teal-900/60 text-teal-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><TbBrandCSharp className="text-teal-200" /> C#</span>
-                  <span title="Python" className="flex items-center gap-2 bg-green-800/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaPython className="text-green-200" /> Python</span>
-                  <span title="Java" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaJava className="text-blue-200" /> Java</span>
-                  <span title="SQL" className="flex items-center gap-2 bg-orange-800/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaDatabase className="text-orange-200" /> SQL</span>
-                  <span title="Lua" className="flex items-center gap-2 bg-blue-800/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiLua className="text-blue-200" /> Lua</span>
+              {skillSections.map((section) => (
+                <div key={section.title}>
+                  <h4 className={`text-lg font-semibold mb-2 text-center ${section.titleClassName}`}>{section.title}</h4>
+                  <div className="flex flex-wrap gap-3 justify-center">
+                    {section.items.map((item) => (
+                      <SkillTag
+                        key={item.title}
+                        title={item.title}
+                        icon={item.icon}
+                        className={item.className}
+                      >
+                        {item.title}
+                      </SkillTag>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-teal-200 mb-2 text-center">Web Development</h4>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <span title="React" className="flex items-center gap-2 bg-cyan-900/60 text-cyan-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaReact className="text-cyan-200" /> React</span>
-                  <span title="ASP.NET" className="flex items-center gap-2 bg-blue-900/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiDotnet className="text-blue-200" /> ASP.NET</span>
-                  <span title="Vue.js" className="flex items-center gap-2 bg-green-900/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaVuejs className="text-green-200" /> Vue.js</span>
-                  <span title="Express.js" className="flex items-center gap-2 bg-gray-800/60 text-gray-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiExpress className="text-gray-200" /> Express.js</span>
-                  <span title="Django" className="flex items-center gap-2 bg-green-700/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiDjango className="text-green-200" /> Django</span>
-                  <span title="Tailwind CSS" className="flex items-center gap-2 bg-teal-800/60 text-teal-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiTailwindcss className="text-teal-200" /> Tailwind CSS</span>
-                  <span title="Node.js" className="flex items-center gap-2 bg-lime-900/60 text-lime-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaNodeJs className="text-lime-200" /> Node.js</span>
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-indigo-200 mb-2 text-center">Databases & Tools</h4>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <span title="T-SQL" className="flex items-center gap-2 bg-red-800/60 text-red-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaDatabase className="text-red-200" /> T-SQL</span>
-                  <span title="MySQL" className="flex items-center gap-2 bg-blue-700/60 text-blue-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiMysql className="text-blue-200" /> MySQL</span>
-                  <span title="MongoDB" className="flex items-center gap-2 bg-green-700/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiMongodb className="text-green-200" /> MongoDB</span>
-                  <span title="Git" className="flex items-center gap-2 bg-orange-800/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiGit className="text-orange-200" /> Git</span>
-                  <span title="NGINX" className="flex items-center gap-2 bg-green-800/60 text-green-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiNginx className="text-green-200" /> NGINX</span>
-                  <span title="Ubuntu" className="flex items-center gap-2 bg-orange-700/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaUbuntu className="text-orange-200" /> Ubuntu</span>
-                  <span title="Cloudflare" className="flex items-center gap-2 bg-orange-600/60 text-orange-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiCloudflare className="text-orange-200" /> Cloudflare</span>
-                  <span title="Figma" className="flex items-center gap-2 bg-purple-800/60 text-purple-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><FaFigma className="text-purple-200" /> Figma</span>
-                  <span title="Miro" className="flex items-center gap-2 bg-indigo-800/60 text-indigo-100 px-3 py-1.5 rounded-full text-sm font-semibold shadow"><SiMiro className="text-indigo-200" /> Miro</span>
-                </div>
-              </div>
+              ))}
             </div>
           </section>
           <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-green-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-500">
