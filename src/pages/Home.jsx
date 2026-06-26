@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Bubbles from '../components/Bubbles';
+import Accordion from '../components/Accordion';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import portrait from '../assets/portrait.png';
 import { PROJECTS_DATA } from '../data/projectsData';
-import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaChevronDown, FaChevronUp, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython, FaDatabase, FaUbuntu, FaFigma, FaDiscord, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaCodeBranch, FaPlus, FaBug, FaGitAlt, FaStar, FaCode, FaPython, FaDatabase, FaUbuntu, FaFigma, FaDiscord, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { SiLua, SiTailwindcss, SiExpress, SiDotnet, SiMysql, SiMongodb, SiDjango, SiGit, SiNginx, SiCloudflare, SiMiro } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import axios from 'axios';
@@ -13,35 +14,30 @@ import axios from 'axios';
 export default function Home() {
   const projects = PROJECTS_DATA.projects.slice(-3);
   const getProjectImage = (id) => new URL(`../assets/projects/${id}.png`, import.meta.url).href;
-  const [openFAQ, setOpenFAQ] = useState(null);
   const [githubActivity, setGithubActivity] = useState([]);
   const [githubError, setGithubError] = useState(null);
   const [githubLoading, setGithubLoading] = useState(true);
 
-  const toggleFAQ = (index) => {
-    setOpenFAQ(openFAQ === index ? null : index);
-  };
-
   const faqData = [
     {
-      question: "What is Tech2Gether?",
-      answer: "Tech2Gether is the tech club at Ozarks Technical Community College, which focuses on bringing together students interested in technology, programming, and cybersecurity. They organize workshops and tech talks to help students grow their skills and engage with industry professionals. If you're a current student at Ozarks Tech interested in tech, it's a great community to be a part of! If you're an alumnus or industry professional, they also welcome guest speakers and sponsors. Visit the Tech2Gether website for more info on how to get involved!"
+      title: "What is Tech2Gether?",
+      content: "Tech2Gether is the tech club at Ozarks Technical Community College, which focuses on bringing together students interested in technology, programming, and cybersecurity. They organize workshops and tech talks to help students grow their skills and engage with industry professionals. If you're a current student at Ozarks Tech interested in tech, it's a great community to be a part of! If you're an alumnus or industry professional, they also welcome guest speakers and sponsors. Visit the Tech2Gether website for more info on how to get involved!"
     },
     {
-      question: "What kind of projects do you enjoy working on?",
-      answer: "I enjoy building practical applications that solve real-world problems. I especially like working on full-stack web apps, experimenting with new technologies, and creating tools that improve workflows or user experience."
+      title: "What kind of projects do you enjoy working on?",
+      content: "I enjoy building practical applications that solve real-world problems. I especially like working on full-stack web apps, experimenting with new technologies, and creating tools that improve workflows or user experience."
     },
     {
-      question: "How do you approach learning new technologies?",
-      answer: "I focus on learning by building. When I encounter a new language or tool, I apply it in a small project and refine my approach through iteration and feedback. I'm comfortable adapting to new systems and enjoy continuously improving my skill set."
+      title: "How do you approach learning new technologies?",
+      content: "I focus on learning by building. When I encounter a new language or tool, I apply it in a small project and refine my approach through iteration and feedback. I'm comfortable adapting to new systems and enjoy continuously improving my skill set."
     },
     {
-      question: "How do you approach writing and maintaining documentation?",
-      answer: "I aim to write clear, concise documentation that makes systems easier to understand and maintain. Whether it's code comments or a readme file, I focus on making information accessible for both current and future developers."
+      title: "How do you approach writing and maintaining documentation?",
+      content: "I aim to write clear, concise documentation that makes systems easier to understand and maintain. Whether it's code comments or a readme file, I focus on making information accessible for both current and future developers."
     },
     {
-      question: "What are your future career goals?",
-      answer: "I'm focused on completing my Computer Information Science degree while gaining hands-on experience through projects and leadership roles. My goal is to work in software engineering, with a strong interest in full-stack development and building impactful applications."
+      title: "What are your future career goals?",
+      content: "I'm focused on completing my Computer Information Science degree while gaining hands-on experience through projects and leadership roles. My goal is to work in software engineering, with a strong interest in full-stack development and building impactful applications."
     }
   ];
 
@@ -394,39 +390,14 @@ Computer Science Student @ Ozarks Tech</h2>
           </section>
           <section className="w-full max-w-3xl mx-auto my-8 bg-black/40 rounded-xl shadow-lg p-8 border border-green-900 transition-opacity duration-1000 opacity-0 animate-fade-in delay-500">
             <h3 className="text-2xl font-bold text-green-300 mb-6">Frequently Asked Questions</h3>
-            <div className="space-y-4">
-              {faqData.map((faq, index) => (
-                <div key={index} className="border border-green-800/50 rounded-lg overflow-hidden">
-                  <button
-                    type="button"
-                    onClick={() => toggleFAQ(index)}
-                    aria-expanded={openFAQ === index}
-                    aria-controls={`faq-panel-${index}`}
-                    id={`faq-trigger-${index}`}
-                    className="w-full px-6 py-4 text-left bg-green-900/20 hover:bg-green-900/30 transition-colors flex items-center justify-between cursor-pointer focus:outline-none focus-visible:bg-green-900/40 focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal-200/90"
-                  >
-                    <span className="text-green-100 font-medium">{faq.question}</span>
-                    {openFAQ === index ? (
-                      <FaChevronUp className="text-green-300 flex-shrink-0" />
-                    ) : (
-                      <FaChevronDown className="text-green-300 flex-shrink-0" />
-                    )}
-                  </button>
-                  <div
-                    id={`faq-panel-${index}`}
-                    role="region"
-                    aria-labelledby={`faq-trigger-${index}`}
-                    hidden={openFAQ !== index}
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openFAQ === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                      }`}
-                  >
-                    <div className="px-6 py-4 bg-green-950/30 border-t border-green-800/50">
-                      <p className="text-green-100 leading-relaxed">{faq.answer}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Accordion
+              items={faqData}
+              className="space-y-4"
+              itemClassName="border border-green-800/50 rounded-lg overflow-hidden"
+              buttonClassName="w-full px-6 py-4 text-left text-white bg-green-900/20 hover:bg-green-900/30 transition-colors flex items-center justify-between cursor-pointer focus:outline-none focus-visible:bg-green-900/40 focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal-200/90"
+              panelClassName="px-6 py-4 bg-green-950/30 border-t border-green-800/50 text-white leading-relaxed"
+              iconClassName="text-green-300 flex-shrink-0"
+            />
           </section>
         </main>
         <Footer />
