@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import { PROJECTS_DATA } from '../data/projectsData';
 import portrait from '../assets/portrait.png';
 
-const projectsDescription = 'Explore projects by Wilhelmina Vanderpool, a Web Developer and Student Leader.';
+const projectsDescription = 'Explore projects by Wilhelmina Vanderpool, a Full Stack Developer and Computer Science Student.';
 const projectsKeywords = 'Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI';
 
 export default function Projects() {
@@ -17,11 +17,11 @@ export default function Projects() {
       <meta name="description" content={projectsDescription} />
       <meta name="keywords" content={projectsKeywords} />
       <link rel="canonical" href={window.location.origin + '/projects'} />
-      <meta property="og:title" content="MinasaurV" />
+      <meta property="og:title" content="Projects | MinasaurV" />
       <meta property="og:description" content={projectsDescription} />
       <meta property="og:url" content={window.location.origin + '/projects'} />
       <meta property="og:image" content={portrait} />
-      <meta itemProp="name" content="MinasaurV" />
+      <meta itemProp="name" content="Projects | MinasaurV" />
       <meta itemProp="description" content={projectsDescription} />
       <meta itemProp="image" content={portrait} />
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">

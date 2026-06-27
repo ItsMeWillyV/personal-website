@@ -15,11 +15,11 @@ export default function NotFound() {
       <meta name="keywords" content={notFoundKeywords} />
       <meta name="robots" content="noindex, follow" />
       <link rel="canonical" href={window.location.origin + window.location.pathname} />
-      <meta property="og:title" content="MinasaurV" />
+      <meta property="og:title" content="404 - Not Found | MinasaurV" />
       <meta property="og:description" content={notFoundDescription} />
       <meta property="og:url" content={window.location.origin + window.location.pathname} />
       <meta property="og:image" content={warningIcon} />
-      <meta itemProp="name" content="MinasaurV" />
+      <meta itemProp="name" content="404 - Not Found | MinasaurV" />
       <meta itemProp="description" content={notFoundDescription} />
       <meta itemProp="image" content={warningIcon} />
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black text-white relative overflow-hidden">
