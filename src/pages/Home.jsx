@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
 import Bubbles from '../components/Bubbles';
 import Accordion from '../components/Accordion';
 import Footer from '../components/Footer';
@@ -11,6 +10,9 @@ import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaReact, FaNodeJs, FaVuejs, FaCodeBra
 import { SiLua, SiTailwindcss, SiExpress, SiDotnet, SiMysql, SiMongodb, SiDjango, SiGit, SiNginx, SiCloudflare, SiMiro } from 'react-icons/si';
 import { TbBrandCSharp } from "react-icons/tb";
 import axios from 'axios';
+
+const homeDescription = 'Wilhelmina Vanderpool is a Full Stack Developer at Cold Brew Code and a Computer Science student at Ozarks Tech. Explore her projects, experience, and ways to connect.';
+const homeKeywords = 'Wilhelmina Vanderpool, MinasaurV, Full Stack Developer, Computer Science, Ozarks Tech, Cold Brew Code, React, JavaScript, Portfolio, Developer';
 
 const skillSections = [
   {
@@ -133,19 +135,17 @@ export default function Home() {
 
   return (
     <>
-      <Helmet key={window.location.pathname}>
-        <title>Home</title>
-        <meta name="description" content="Welcome to the website of Wilhelmina Vanderpool, a Computer Information Science Student & Junior Developer." />
-        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Information Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Ozarks Tech, Tech2Gether, Student, Programmer, Developer, Pixel Art, Skateboarding, C#, Python, Java, SQL, Lua, ASP.NET, Django, Vue.js, Express.js, Tailwind CSS, T-SQL, MySQL, MongoDB, Git, NGINX, Ubuntu, Cloudflare, Figma, Miro" />
-        <link rel="canonical" href={window.location.origin + '/'} />
-        <meta property="og:title" content="MinasaurV" />
-        <meta property="og:description" content="Welcome to the website of Wilhelmina Vanderpool, a Computer Information Science Student & Junior Developer." />
-        <meta property="og:url" content={window.location.origin + '/'} />
-        <meta property="og:image" content={portrait} />
-        <meta itemProp="name" content="MinasaurV" />
-        <meta itemProp="description" content="Welcome to the website of Wilhelmina Vanderpool, a Computer Information Science Student & Junior Developer." />
-        <meta itemProp="image" content={portrait} />
-      </Helmet>
+      <title>MinasaurV</title>
+      <meta name="description" content={homeDescription} />
+      <meta name="keywords" content={homeKeywords} />
+      <link rel="canonical" href={window.location.origin + '/'} />
+      <meta property="og:title" content="MinasaurV" />
+      <meta property="og:description" content={homeDescription} />
+      <meta property="og:url" content={window.location.origin + '/'} />
+      <meta property="og:image" content={portrait} />
+      <meta itemProp="name" content="MinasaurV" />
+      <meta itemProp="description" content={homeDescription} />
+      <meta itemProp="image" content={portrait} />
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black relative overflow-y-auto">
         <Header />
         <Bubbles />

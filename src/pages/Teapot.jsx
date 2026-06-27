@@ -1,27 +1,27 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import Bubbles from '../components/Bubbles';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import teapotImg from '../assets/Teapot.png';
 
+const teapotDescription = 'The server refuses to brew coffee because it is a teapot.';
+const teapotKeywords = 'Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI, Teapot, 418';
+
 export default function Teapot() {
   return (
     <>
-      <Helmet key={window.location.pathname}>
-        <title>418 - I'm a Teapot</title>
-        <meta name="description" content="The server refuses to brew coffee because it is a teapot." />
-        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI, Teapot, 418" />
-        <meta name="robots" content="noindex, follow" />
-        <link rel="canonical" href={window.location.origin + '/teapot'} />
-        <meta property="og:title" content="MinasaurV" />
-        <meta property="og:description" content="The server refuses to brew coffee because it is a teapot." />
-        <meta property="og:url" content={window.location.origin + '/teapot'} />
-        <meta property="og:image" content={teapotImg} />
-        <meta itemProp="name" content="MinasaurV" />
-        <meta itemProp="description" content="The server refuses to brew coffee because it is a teapot." />
-        <meta itemProp="image" content={teapotImg} />
-      </Helmet>
+      <title>418 - I'm a Teapot | MinasaurV</title>
+      <meta name="description" content={teapotDescription} />
+      <meta name="keywords" content={teapotKeywords} />
+      <meta name="robots" content="noindex, follow" />
+      <link rel="canonical" href={window.location.origin + '/teapot'} />
+      <meta property="og:title" content="MinasaurV" />
+      <meta property="og:description" content={teapotDescription} />
+      <meta property="og:url" content={window.location.origin + '/teapot'} />
+      <meta property="og:image" content={teapotImg} />
+      <meta itemProp="name" content="MinasaurV" />
+      <meta itemProp="description" content={teapotDescription} />
+      <meta itemProp="image" content={teapotImg} />
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black text-white relative overflow-hidden">
         <Header />
         <Bubbles />

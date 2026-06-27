@@ -1,28 +1,27 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import Bubbles from '../components/Bubbles';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import warningIcon from '../assets/warn.png';
-import portrait from '../assets/portrait.png';
+
+const notFoundDescription = 'The page you are looking for does not exist.';
+const notFoundKeywords = 'Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer';
 
 export default function NotFound() {
   return (
     <>
-      <Helmet key={window.location.pathname}>
-        <title>404 - Not Found</title>
-        <meta name="description" content="The page you are looking for does not exist." />
-        <meta name="keywords" content="Wilhelmina Vanderpool, MinasaurV, Computer Science, Full Stack Developer, JavaScript, React, Portfolio, OTC, Tech2Gether, Student, Programmer, Developer, Pixel Art, 3D Printing, C#, Lua, Java, Tailwind, Node.js, Express, .NET MAUI" />
-        <meta name="robots" content="noindex, follow" />
-        <link rel="canonical" href={window.location.origin + window.location.pathname} />
-        <meta property="og:title" content="MinasaurV" />
-        <meta property="og:description" content="The page you are looking for does not exist." />
-        <meta property="og:url" content={window.location.origin + window.location.pathname} />
-        <meta property="og:image" content={portrait} />
-        <meta itemProp="name" content="MinasaurV" />
-        <meta itemProp="description" content="The page you are looking for does not exist." />
-        <meta itemProp="image" content={portrait} />
-      </Helmet>
+      <title>404 - Not Found | MinasaurV</title>
+      <meta name="description" content={notFoundDescription} />
+      <meta name="keywords" content={notFoundKeywords} />
+      <meta name="robots" content="noindex, follow" />
+      <link rel="canonical" href={window.location.origin + window.location.pathname} />
+      <meta property="og:title" content="MinasaurV" />
+      <meta property="og:description" content={notFoundDescription} />
+      <meta property="og:url" content={window.location.origin + window.location.pathname} />
+      <meta property="og:image" content={warningIcon} />
+      <meta itemProp="name" content="MinasaurV" />
+      <meta itemProp="description" content={notFoundDescription} />
+      <meta itemProp="image" content={warningIcon} />
       <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-900 to-black text-white relative overflow-hidden">
         <Header />
         <Bubbles />
